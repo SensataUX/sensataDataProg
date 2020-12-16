@@ -1,0 +1,24 @@
+Package: sensataDataProg
+Title: Cleaning Data from Sensata Platform
+Version: 0.0.1
+Authors@R: 
+    c(person(given = "Gabriel N.",
+           family = "Camargo-Toledo",
+           role = c("cre"),
+           email = "gcamargo@sensata.io"),
+      person(given = "Gabriel N.",
+           family = "Camargo-Toledo",
+           role = c("aut"),
+           email = "gcamargo@sensata.io"),
+      person(given = "Sensata UX.",
+           family = "Research",
+           role = c("cph"),
+           email = "hola@sensata.io",
+           comment = "www.sensata.io"))
+Description: This package is used by Sensata UX to create dictionary and microdata from the platform. It includes different functions for this purpose. Eventually it will include also files to create reports and graphs using the formatting we use.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: tidyverse
