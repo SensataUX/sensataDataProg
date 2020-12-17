@@ -103,7 +103,7 @@ diccFunction <- function(dat, exclude = NULL, f = NULL) {
     full_join(qid_d)
   dic_data <- dic_data %>% relocate(Q, identifier, qid, type)
   if (!is.null(f)) {
-    write_excel_csv2(dic_data, file = paste0(f, ".csv"))
+    write_csv(dic_data, file = paste0(f, ".csv"))
     save(dic_data, file = paste0(f, ".Rdata"))
     dic_data
   } else {
