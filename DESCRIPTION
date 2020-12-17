@@ -1,6 +1,6 @@
 Package: sensataDataProg
 Title: Cleaning Data from Sensata Platform
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "Gabriel N.",
            family = "Camargo-Toledo",
