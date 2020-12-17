@@ -20,7 +20,7 @@ diccFunction <- function(dat, exclude = NULL, f = NULL) {
   # Loading packages
   require(tidyverse)
 
-  # Loading data and erasing q0
+  # Loading data
   d <- read_csv(dat)
 
   # Exclude vars if they are any to exclude, and selecting the vars needed for dictionary
