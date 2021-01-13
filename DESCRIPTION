@@ -1,6 +1,6 @@
 Package: sensataDataProg
 Title: Cleaning Data from Sensata Platform
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(given = "Gabriel N.",
            family = "Camargo-Toledo",
@@ -10,6 +10,10 @@ Authors@R:
            family = "Camargo-Toledo",
            role = c("aut"),
            email = "gcamargo@sensata.io"),
+      person(given = "Camilo.",
+           family = "Delvasto",
+           role = c("aut"),
+           email = "camilo@sensata.io"),
       person(given = "Sensata UX.",
            family = "Research",
            role = c("cph"),
