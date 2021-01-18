@@ -4,33 +4,36 @@
 \alias{scrubData}
 \title{Function to scrub sensata data}
 \usage{
-scrubData(data, dup = T, ageVar, ageVal, timeMin = 2.5, geoloc = F)
+scrubData(data, dup = T, timeMin = 2.5, geoloc = F, ageVar, ageVal)
 }
 \arguments{
 \item{data}{data downloaded from Mongo and cleaned with cleanData.R}
 
-\item{dup}{logical, if FALSE it does not scrub duplicate data}
+\item{dup}{logical, if TRUES it scrubs duplicate data}
+
+\item{timeMin}{minimum amount of minutes that the survey should have. Default 2.5 mins. If no scrubbing by time is required make it 0.}
+
+\item{geoloc}{logical, if TRUE it will scrub surveys that have no geolocation.}
 
 \item{ageVar}{name of variable of age variable, if empty then it will not scrub by age.}
 
 \item{ageVal}{value of age that should be excluded}
-
-\item{timeMin}{minimum amount of minutes that the survey should have. Default 2.5 mins}
-
-\item{geoloc}{logical, if TRUE it will scrub surveys that have no geolocation.}
 }
 \value{
-Dataframe dictionary and exported to .csv and .Rdata useful for data cleaning
+Dataframe without the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, dupNum, ageNum, timeNum, geoNum, and finNum
 }
 \description{
 This function eliminates cases because they are duplicated, or minors, or other reasons.
+It also creates attributes with the number of people left after each scrubbing step.
 }
 \examples{
-scrubData("IND_data.csv", q2)
+bogData1 <- bogData1 \%>\% scrubData(dup = F, ageVar = "EVCS2", ageVal = "Menos de 18 aÃ±os", geoloc = T)
 }
 \author{
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}
 }
-\keyword{diccionario}
-\keyword{dictionary}
+\keyword{data-cleaning}
+\keyword{data-scrubbing}
+\keyword{metadata}
+\keyword{microdata}
 \keyword{sensata}

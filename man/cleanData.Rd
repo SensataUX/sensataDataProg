@@ -9,8 +9,9 @@ cleanData(
   dictionary,
   keep = c("id", "surveyName", "surveyId", "totalTimeMin", "geolocation.coordinates",
     "fingerprint", "browserReport.ip", "sensataId", "createdAt"),
-  params = T,
-  skipVal = "Saltar pregunta"
+  removeParams = F,
+  skipVal = "Saltar pregunta",
+  questionPrefix = "q_"
 )
 }
 \arguments{
@@ -20,22 +21,25 @@ cleanData(
 
 \item{keep}{vector of names of metadata columns to keep. Defaults to: id, surveyName, surveyId, totalTimeMin, geolocation.coordinates, fingerprint, browserReport.ip and, createdAt. All questions are always included.}
 
-\item{params}{logical, if F params from mongo are erased.}
+\item{removeParams}{logical, if T params from mongo are removed}
 
 \item{skipVal}{Text that should have all the skipped questions. defaults to "Saltar pregunta"}
+
+\item{questionPrefix}{Character that identifies questions.}
 }
 \value{
-Dataframe dictionary and exported to .csv and .Rdata useful for data cleaning
+Dataframe with only the necessary metadata columns, usually called as interim data.
 }
 \description{
 This function eliminates the unnecesary metadata columns and renames the columns from mongo to the identifier, according to the dictionary.
 }
 \examples{
-cleanData(dictionary = bogExpDic,skipVal = "Probando skipVal")
+bogData <- bogData \%>\% cleanData(dictionary = bogDic)
 }
 \author{
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}
 }
-\keyword{diccionario}
-\keyword{dictionary}
+\keyword{data-cleaning}
+\keyword{metadata}
+\keyword{microdata}
 \keyword{sensata}

@@ -6,8 +6,10 @@
 \usage{
 dictGenerator(
   data,
-  params = c("identifier", "question", "type", "options"),
-  expandOptions = T
+  params = c("identifier", "question", "type", "options", "numberOfOptions",
+    "isOrdered", "isSorting", "maxResponses"),
+  expandOptions = T,
+  questionPrefix = "q_"
 )
 }
 \arguments{
@@ -16,6 +18,8 @@ dictGenerator(
 \item{params}{columns to create on the dictionary.}
 
 \item{expandOptions}{logical. If FALSE, the dictionary will have one row per question.}
+
+\item{questionPrefix}{Character that identifies questions}
 }
 \value{
 Dataframe dictionary useful for data cleaning
@@ -24,7 +28,7 @@ Dataframe dictionary useful for data cleaning
 This function allows you to create a dictionary from Sensata's data exported from Mongo.
 }
 \examples{
-dictGenerator(data = demoData, params = params, expandOptions = F)
+dictGenerator(data = demoData, expandOptions = F)
 }
 \author{
 Camilo Delvasto \email{camilo@sensata.io} & Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}
