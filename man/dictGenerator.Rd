@@ -5,19 +5,19 @@
 \title{Function to create sensata dictionary}
 \usage{
 dictGenerator(
-  data,
-  params = c("identifier", "question", "type", "options", "numberOfOptions",
-    "isOrdered", "isSorting", "maxResponses"),
-  expandOptions = T,
+  df,
+  cols = c("identifier", "question", "type", "options", "numberOfOptions", "isOrdered",
+    "isSorting", "maxResponses", "altOption"),
+  expandOptions = TRUE,
   questionPrefix = "q_"
 )
 }
 \arguments{
-\item{data}{data downloaded from Mongo and loaded to R}
+\item{df}{data downloaded from Mongo and loaded to R}
 
-\item{params}{columns to create on the dictionary.}
+\item{cols}{columns to create on the dictionary.}
 
-\item{expandOptions}{logical. If FALSE, the dictionary will have one row per question.}
+\item{expandOptions}{logical. If TRUE, the dictionary will have one row per answer option. if FALSE, it will be 1 row per question.}
 
 \item{questionPrefix}{Character that identifies questions}
 }
