@@ -39,8 +39,7 @@ makeFactors <- function(
   skipQuestionString = "Saltar pregunta",
   multChoiceText = c(1,0)
 ) {
-  # Loading packages
-  require(tidyverse)
+
 
   # Message about skip question string
   rlang::inform("This function assumes that skipped questions are coded as S99 in mongo, if not you need to change the function.")

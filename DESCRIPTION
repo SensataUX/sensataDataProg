@@ -23,6 +23,7 @@ Description: This package is used by Sensata UX to create dictionary and microda
 Depends: 
     R (>= 4.0.0),
     tidyverse
+    labelled
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

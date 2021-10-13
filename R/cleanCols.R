@@ -48,9 +48,6 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
                       removeScreens = TRUE,
                       responseType = "newResponses"){
 
-  # Load packages
-  require(tidyverse)
-  require(labelled)
 
   # Rename _id
   df <- df %>% rename(id = `_id`)

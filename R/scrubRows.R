@@ -49,8 +49,6 @@ scrubRows <- function(df,
                       ageVal = NULL,
                       testParamName = NULL,
                       completeVars = NULL){
-  # Load packages
-  require(tidyverse)
 
   # Erase test --------------------------------------------------------------
   numTest <- 0

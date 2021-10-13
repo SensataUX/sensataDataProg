@@ -40,7 +40,7 @@ selectCols <- function(df,
                        dropMetaData = T,
                        dropTotalTime = T,
                        dropQuestionTime = T){
-  require(tidyverse)
+
   dropVec <- vector()
   if(dropGeo && geoCoordinates){
     dropVec <- c("geolocation.coordinates")

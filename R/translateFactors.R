@@ -9,8 +9,8 @@
 
 #' Function to translate factors from sensata data two different languages
 #'
-#' This function allows you to create factors with the information from the dictionary to the variables in the microdata. 
-#' DO NOT USE for NPSor slider questions that have range different than 0-10. 
+#' This function allows you to create factors with the information from the dictionary to the variables in the microdata.
+#' DO NOT USE for NPSor slider questions that have range different than 0-10.
 #' @param df data downloaded from Mongo, cleaned with cleanData.R and scrubbed with scrubData.R
 #' @param fromDictionary dictionary created using dictGenerator.R in expanded form without screens in the original language
 #' @param toDictionary dictionary created using dictGenerator.R in expanded form without screens in the target language
@@ -21,42 +21,40 @@
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with questions in format that is analysis friendly.
 #' @keywords sensata microdata data-cleaning factors dictionary
-#' @import tidyverse
+#' @import tidyverse, labelled
 #'
 #' @examples
 #' TBD
 #' @export
 
 translateFactors <- function(
-  df, 
-  fromDictionary, 
+  df,
+  fromDictionary,
   toDictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta"
 ) {
-  # Loading packages
-  require(tidyverse)
-  require(labelled)
-  
+
+
   # Message about skip question string and options orders
   rlang::inform("This function assumes that the options of questions are in the same order in the dictionaries. If not, you have to change the dictionaries. It also assumes that the identifiers are identical in the dictionaries.")
   # Saving data attributes of sample size (number of rows) for report ----------
   at <- attributes(df)
   at <- at[grep("num", names(at))]
-  
+
   # Change skipped questions, false and true --------------------------------------------
   createdAt <- df["createdAt"]
   df["createdAt"] <- NA
-  
+
   df[df == "true"] <- "1"
   df[df == "false"] <- "0"
   df[df == "NS-NR"] <- skipQuestionString
   df[df == "S99"] <- skipQuestionString
   df["createdAt"] <- createdAt
-  
+
   # Vector of only questions ------------------------------------------------
   questionsVec <- df %>% select(contains(questionPrefix)) %>% names()
-  
+
   # Loop over questions -----------------------------------------------------
   for(v in questionsVec){
     #Creating dictionaries only for this variable
@@ -69,33 +67,33 @@ translateFactors <- function(
     if(any(!(duplicated(dictFrom[["qid"]])))){
       dictFrom <- dictFrom %>% separate_rows(options, sep = "_", convert = T)
     }
-    
+
     if(any(!(duplicated(dictTo[["qid"]])))){
       dictTo <- dictTo %>% separate_rows(options, sep = "_", convert = T)
     }
-    
+
     #force options as character
     dictFrom[["options"]] <- as.character(dictFrom[["options"]])
     dictTo[["options"]] <- as.character(dictTo[["options"]])
-    
+
     #Creating indicator if multiple
     isMultiple <- if_else(dictTo[["maxResponses"]][1] > 1, TRUE, FALSE)
     isSorting <- dictTo[["isSorting"]][1]
-    
+
     #Creating indicator if close question
     isClose <- if_else(dictTo[["options"]][1] == "-" & dictTo[["numberOfOptions"]][1] == 0, FALSE, TRUE)
-    
+
     #Number of options
     nOptions <- 1:dictFrom[["numberOfOptions"]][1]
-    
+
     # Creating levels and labels of factors and columns for multiple choice -------------
     # Single choice questions ------
     #TODO: Add emojis labels
     if(!(isMultiple) && isClose){
-      
+
       lab <- c(dictTo[["options"]], skipQuestionString)
       lev <- c(dictFrom[["options"]], skipQuestionString)
-      
+
       # Modifying labels and levels for ordered, NPS and slider
       if(dictTo[["isOrdered"]][1]){
         # lev <- c(1:(dictFrom[["numberOfOptions"]][1]), skipQuestionString)
@@ -128,7 +126,7 @@ translateFactors <- function(
         lev <- c(dictTo[["options"]], dictTo[["altOption"]][1], skipQuestionString)
       }
     }
-    
+
     # Multiple choice questions ------
     if(isMultiple && !isSorting){
       rlang::inform(paste0(v," is multiple choice, should be translated by hand after"))
@@ -153,17 +151,17 @@ translateFactors <- function(
 
       df <- df %>% select(!starts_with("MUL"))
     }
-    
+
     # Sorting questions -----
     if(isMultiple && isSorting){
       rlang::inform(paste0(v," is multiple choice, should be translated by hand after"))
       intoVec <- paste0(v, "_position_", nOptions)
-      df <- df %>% separate(col = v, 
+      df <- df %>% separate(col = v,
                             into = c(intoVec),
-                            sep = "/", 
+                            sep = "/",
                             remove = F,
                             fill = "right")
-    } 
+    }
 
     # Force Ordered questions -----
     if(dictTo[["isForceOrdered"]][1] && !is.na(dictTo[["isForceOrdered"]][1])){
@@ -179,19 +177,19 @@ translateFactors <- function(
     }
   }
   # Label vars --------------------------------------------------------------
-  labList <- toDictionary %>% 
+  labList <- toDictionary %>%
     filter(type!="screen") %>%
     filter(identifier %in% fromDictionary[["identifier"]]) %>%
-    select("identifier", "question") %>% 
+    select("identifier", "question") %>%
     unique() %>%
     pivot_wider(names_from = identifier, values_from = question) %>%
     as.list()
-  
+
   var_label(df) <- labList
-  
+
   # Recovering attributes for report ---------------------------------
   attributes(df) <- c(attributes(df), at)
-  
+
   return(df)
 }
 
