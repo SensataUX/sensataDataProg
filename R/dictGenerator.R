@@ -38,7 +38,7 @@ dictGenerator <- function(df,
                           responseType = "newResponses"){
 
   # Use the following package
-  require(tidyverse)
+  # require(tidyverse)
 
   # Fill up and reduce to one row of data
   df <- df %>% select(matches(responseType))

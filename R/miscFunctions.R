@@ -19,24 +19,4 @@ dividethou_fun <- function(x) {
 }
 
 
-#' Percentage of missing values
-#'
-#' This function counts how many of a vector are missing, and divides them by the number of questions
-#' @param x vector to count missings on
-#' @param mis character that identifies missing values.
-#' @param nques number of questions on the instrument
-#'
-#' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
-#' @return percentage of that vector that is identical to missing value
-#' @keywords missing sensata skip
-#'
-#'
-#' @examples
-#' dividethou_fun(data$q1time)
-#' @export
-
-
-mis_fun <- function(x, mis="NS-NR", nques) {
-  (length(which(x==mis))/nques)*100
-}
 
