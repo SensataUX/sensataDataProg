@@ -1,11 +1,13 @@
-# translateFactors --------------------------------------------------------------
-#Created by: Gabriel N. Camargo-Toledo
-#Modified by: Gabriel N. Camargo-Toledo
-#Modified on: Sep/01/2021
-#Contact: gcamargo@sensata.io
-#Sensata Asus VivoBook Pop!_OS 20.10 8gb Ram R4.0.5
+# translateFactors V1
+# Created by: Gabriel N. Camargo-Toledo
+# Modified by: Gabriel N. Camargo-Toledo
+# Modified on: Oct/13/2021
+# Contact: gcamargo@sensata.io
+# Sensata Asus VivoBook Pop!_OS 21.04 8gb Ram R4.1.1
 # TODO: Translate multiple option questions, possible solution on cuidado/scripts/cleaningData.R
 # TODO: Find out why in multiple option questions the translation has different length.
+
+# translateFactors --------------------------------------------------------------
 
 #' Function to translate factors from sensata data two different languages
 #'

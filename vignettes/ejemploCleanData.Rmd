@@ -1,0 +1,38 @@
+---
+title: "Ejemplo clean data"
+author: "Gabriel N. Camargo-Toledo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ejemploCleanData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introducción
+Esta viñeta presenta un ejemplo de las principales funciones del paquete sensataDataProg. La intención de este paquete es simplificar la limpieza y manipulación de datos recolectados con la plataforma Sensata para dejarlos listos para el análisis.
+
+# Instalación y carga del paquete
+
+El paquete se debe instalar de github. Este también instala todas las dependencias (tidyverse y labelled)
+
+```{r setup}
+devtools::install_github("GaborioSensata/sensataDataProg")
+library(sensataDataProg)
+```
+
+# Datos
+
+El paquete incluye una base de datos raw de ejemplo, sensataExample . Los datos deben ser descargados de mongo. Así se cargan los datos de ejemplo:
+
+```{r load-data}
+rawData <- sensataDataProg::sensataExample
+head(rawData)
+```

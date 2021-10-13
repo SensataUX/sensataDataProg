@@ -1,6 +1,6 @@
 Package: sensataDataProg
 Title: Cleaning Data from Sensata Platform
-Version: 0.0.3
+Version: 1.0.0
 Authors@R: 
     c(person(given = "Gabriel N.",
            family = "Camargo-Toledo",
@@ -33,6 +33,8 @@ Imports:
     labelled,
     splitstackshape
 Suggests:
-    beepr
+    beepr,
+    knitr
 URL: https://github.com/GaborioSensata/sensataDataProg
 BugReports: https://github.com/GaborioSensata/sensataDataProg/issues
+VignetteBuilder: knitr

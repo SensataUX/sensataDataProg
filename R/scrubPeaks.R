@@ -1,4 +1,4 @@
-# Scrub atypical peaks .R
+# ScrubPeaks.R V1
 # Description: Function to scrub atypical peaks, to control manipulation attempts
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Aug/10/2021

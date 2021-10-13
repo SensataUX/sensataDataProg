@@ -1,4 +1,4 @@
-# makeFactors.R V2
+# makeFactors.R V1
 # Description: This function eliminates the unnecesary metadata columns and renames the columns from mongo to the identifier, according to the dictionary.
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Jan/19/2021
@@ -178,6 +178,11 @@ makeFactors <- function(
 
   var_label(df) <- labList
 
+  # fixing id --------------------------------------------------------
+  df[["id"]] <- df[["id"]] %>%
+    str_remove_all("ObjectId") %>%
+    str_remove_all("\\(") %>%
+    str_remove_all("\\)")
   # Recovering attributes for report ---------------------------------
   attributes(df) <- c(attributes(df), at)
 

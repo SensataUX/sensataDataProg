@@ -1,4 +1,4 @@
-# cleanCols.R V2
+# cleanCols.R V1
 # Description: This function eliminates the unnecesary metadata columns and renames the columns from mongo to the identifier, according to the dictionary.
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Jan/19/2021

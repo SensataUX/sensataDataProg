@@ -1,4 +1,4 @@
-# DictGenerator V2
+# DictGenerator V1
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Aug/18/2021
 # Modified by: Gabriel N. Camargo-Toledo
