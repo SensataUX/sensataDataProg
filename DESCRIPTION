@@ -22,7 +22,7 @@ Authors@R:
 Description: This package is used by Sensata UX to create dictionary and microdata from the platform. It includes different functions for this purpose. Eventually it will include also files to create reports and graphs using the formatting we use.
 Depends: 
     R (>= 4.0.0),
-    tidyverse
+    tidyverse,
     labelled
 License: MIT + file LICENSE
 Encoding: UTF-8
