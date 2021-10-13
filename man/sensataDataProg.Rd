@@ -3,8 +3,13 @@
 \docType{package}
 \name{sensataDataProg}
 \alias{sensataDataProg}
-\title{sensataDataProg: This package has the functions needed to clean and manipulate data created with the Sensata platform.}
+\title{sensataDataProg: from Mongo to R}
+\source{
+\url{https://github.com/GaborioSensata/sensataDataProg}
+}
 \description{
+This package has the functions needed to clean and manipulate data created with the Sensata platform.
+
 Este paquete tiene las funciones necesarias para limpiar y manipular los datos de la plataforma Sensata.
 }
 \section{sensataDataProg basic functions}{
