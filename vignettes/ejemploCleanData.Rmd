@@ -24,7 +24,7 @@ Esta viñeta presenta un ejemplo de las principales funciones del paquete sensat
 El paquete se debe instalar de github. Este también instala todas las dependencias (tidyverse y labelled)
 
 ```{r setup}
-devtools::install_github("GaborioSensata/sensataDataProg")
+devtools::install_github("GaborioSensata/sensataDataProg", force = T)
 library(sensataDataProg)
 ```
 
@@ -33,6 +33,6 @@ library(sensataDataProg)
 El paquete incluye una base de datos raw de ejemplo, sensataExample . Los datos deben ser descargados de mongo. Así se cargan los datos de ejemplo:
 
 ```{r load-data}
-rawData <- sensataDataProg::sensataExample
-head(rawData)
+# rawData <- sensataDataProg::sensataExample
+head(sensataExample)
 ```
