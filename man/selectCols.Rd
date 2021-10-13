@@ -7,6 +7,7 @@
 selectCols(
   df,
   dropGeo = T,
+  geoCoordinates = F,
   dropParams = T,
   dropUserData = T,
   dropMetaData = T,

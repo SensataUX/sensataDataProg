@@ -14,7 +14,7 @@ makeFactors(
 \arguments{
 \item{df}{data downloaded from Mongo, cleaned with cleanData.R and scrubbed with scrubData.R}
 
-\item{dictionary}{dictionary created using dictGenerator.R in expanded form}
+\item{dictionary}{dictionary created using dictGenerator.R in expanded form without screens}
 
 \item{questionPrefix}{Character that identifies questions}
 

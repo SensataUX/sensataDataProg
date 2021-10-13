@@ -10,8 +10,9 @@ scrubRows(
   timeMin = 2.5,
   geoloc = F,
   ageVar = NULL,
-  ageVal,
-  testParamName = NULL
+  ageVal = NULL,
+  testParamName = NULL,
+  completeVars = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ scrubRows(
 \item{ageVal}{value of age that should be excluded}
 
 \item{testParamName}{character object of name of test param, usually test}
+
+\item{completeVars}{character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.}
 }
 \value{
 Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum

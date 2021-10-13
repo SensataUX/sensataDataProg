@@ -2,40 +2,36 @@
 % Please edit documentation in R/translateFactors.R
 \name{translateFactors}
 \alias{translateFactors}
-\title{Function to translate factors from sensata data from one language to another}
+\title{Function to translate factors from sensata data two different languages}
 \usage{
 translateFactors(
   df,
-  fromDict,
-  toDict,
+  fromDictionary,
+  toDictionary,
   questionPrefix = "q_",
-  skipQuestionStringFrom,
-  skipQuestionStringTo
+  skipQuestionString = "Saltar pregunta"
 )
 }
 \arguments{
-\item{fromDict}{dictionary created using dictGenerator.R from which to translate the data.}
+\item{df}{data downloaded from Mongo, cleaned with cleanData.R and scrubbed with scrubData.R}
+
+\item{fromDictionary}{dictionary created using dictGenerator.R in expanded form without screens in the original language}
+
+\item{toDictionary}{dictionary created using dictGenerator.R in expanded form without screens in the target language}
 
 \item{questionPrefix}{Character that identifies questions}
 
-\item{skipQuestionStringFrom}{value that represents the skipped questions in original language}
-
-\item{skipQuestionStringTo}{value that represents the skipped questions in target language}
-
-\item{data}{data downloaded from Mongo, cleaned with cleanData.R and scrubbed with scrubData.R}
-
-\item{toDic}{dictionary created using dictGenerator.R to translate the data to.}
+\item{skipQuestionString}{value that represents the skipped questions. By default "Saltar pregunta"}
 }
 \value{
-Dataframe with questions in format that have been prepared with makeFactor
+Dataframe with questions in format that is analysis friendly.
 }
 \description{
-This function allows you to translate factors with the information from the dictionary to the variables in the microdata, from one language to another.
-DO NOT USE for NPS questions that have range different than 0-10. This function erases attributes about sample sizes.
-This function requires two dictionaries, one for the original language and another for the language to translate to
+This function allows you to create factors with the information from the dictionary to the variables in the microdata.
+DO NOT USE for NPSor slider questions that have range different than 0-10.
 }
 \examples{
-coronaTestData <-makeFactors(data = bogData3, dict = bogExpDic)
+TBD
 }
 \author{
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}

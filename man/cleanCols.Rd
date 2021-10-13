@@ -8,10 +8,11 @@ cleanCols(
   df,
   dictionary,
   colsToKeep = c("id", "surveyName", "surveyId", "totalTimeMin",
-    "geolocation.coordinates", "fingerprint", "browserReport.ip", "sensataId",
-    "createdAt"),
+    "geolocation.coordinates", "lat", "long", "fingerprint", "browserReport.ip",
+    "sensataId", "createdAt"),
   removeParams = FALSE,
-  removeScreens = TRUE
+  removeScreens = TRUE,
+  responseType = "newResponses"
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ cleanCols(
 \item{removeParams}{logical, if TRUE params from mongo are removed.}
 
 \item{removeScreens}{logical, if TRUE  screens are removed}
+
+\item{responseType}{which object version should the function use, one of "newResponses" or "structuredResponses"}
 }
 \value{
 Dataframe with renamed fewer metadata and renamed selected answers as the question identifier.

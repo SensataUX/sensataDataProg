@@ -6,10 +6,12 @@
 \usage{
 dictGenerator(
   df,
-  cols = c("identifier", "question", "type", "options", "numberOfOptions", "isOrdered",
-    "isSorting", "maxResponses", "altOption"),
+  cols = c("qid", "identifier", "question", "type", "options", "numberOfOptions",
+    "isOrdered", "isSorting", "maxResponses", "altOption"),
   expandOptions = TRUE,
-  questionPrefix = "q_"
+  questionPrefix = "q_",
+  forceOrdered = NULL,
+  responseType = "newResponses"
 )
 }
 \arguments{
@@ -19,7 +21,11 @@ dictGenerator(
 
 \item{expandOptions}{logical. If TRUE, the dictionary will have one row per answer option. if FALSE, it will be 1 row per question.}
 
-\item{questionPrefix}{Character that identifies questions}
+\item{questionPrefix}{character that identifies questions}
+
+\item{forceOrdered}{vector of ordered questions that are from a non-ordered types}
+
+\item{responseType}{which object version should the function use, one of "newResponses" or "structuredResponses"}
 }
 \value{
 Dataframe dictionary useful for data cleaning
