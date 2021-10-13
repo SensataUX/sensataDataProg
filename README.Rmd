@@ -19,9 +19,9 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-This package is a WIP that has the functions needed to clean and manipulate data created with the Sensata platform.
+This package has the functions needed to clean and manipulate data created with the Sensata platform.
 
-Este paquete es un WIP que tendrá las funciones necesarias para limpiar y manipular los datos de la plataforma Sensata.
+Este paquete tiene las funciones necesarias para limpiar y manipular los datos de la plataforma Sensata.
 
 ## Installation
 
@@ -36,17 +36,36 @@ devtools::install_github("GaborioSensata/sensataDataProg")
 ```
 ## Example
 
-This is a basic example which shows you how to create a dictionary of the microdata:
+This is a basic example which shows how to prepare raw data from sensata platform (data included as an example in the package):
 
-Este es un ejemplo básico que muestra cómo crear un diccionario de los microdatos:
+Este es un ejemplo básico que muestra cómo preparar datos raw de la plataforma sensata (datos incluidos como ejemplo en el paquete):
 
 ```{r example, eval=FALSE}
 library(sensataDataProg)
 
-dictGenerator(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
+rawData <- sensataDataProg::sensataExample
+
+Dict <- dictGenerator(
+  df = rawData,
+  questionPrefix = "",
+  forceOrdered = "q_AB_NI_01"
+)
+
+Dict$options <- sub("\\//.*", "", Dict$options)
+
+
+intData <- cleanCols(df = rawData,
+                    dictionary = Dict)
+
+intData<- scrubRows(df = intData,
+          testParamName = "test")
+
+intData <- intData %>% makeFactors(dictionary = Dict,
+                                   multChoiceText = c("Yes", "No"))
+
 
 ```
 
 ## TO-DO
 
-Why is there a line of tidyverse, in the namespace
+- Create vignettes
