@@ -21,7 +21,8 @@
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with questions in format that is analysis friendly.
 #' @keywords sensata microdata data-cleaning factors dictionary
-#' @import tidyverse, labelled
+#' @import tidyverse
+#' @import labelled
 #'
 #' @examples
 #' TBD

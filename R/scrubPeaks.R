@@ -26,7 +26,8 @@
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return microdata without rows from atypical peaks and attributes saving number of individuals
 #' @keywords sensata microdata metadata data-cleaning CCV21-1
-#' @import tidyverse, lubridate
+#' @import tidyverse
+#' @import lubridate
 #'
 #' @export
 #'

@@ -38,3 +38,7 @@ library(sensataDataProg)
 
 dictGenerator(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
 ```
+
+## TO-DO
+
+Why is there a line of tidyverse, in the namespace

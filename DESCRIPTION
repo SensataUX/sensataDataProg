@@ -20,17 +20,16 @@ Authors@R:
            email = "hola@sensata.io",
            comment = "www.sensata.io"))
 Description: This package is used by Sensata UX to create dictionary and microdata from the platform. It includes different functions for this purpose. Eventually it will include also files to create reports and graphs using the formatting we use.
-Depends: 
+Depends:
     R (>= 4.0.0),
-    tidyverse,
-    labelled
+    tidyverse (>= 1.3.0),
+    labelled (>= 2.7.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports:
-    tidyverse,
     labelled,
     splitstackshape
 Suggests:
