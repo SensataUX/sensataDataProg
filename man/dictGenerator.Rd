@@ -9,7 +9,7 @@ dictGenerator(
   cols = c("qid", "identifier", "question", "type", "options", "numberOfOptions",
     "isOrdered", "isSorting", "maxResponses", "altOption"),
   expandOptions = TRUE,
-  questionPrefix = "q_",
+  questionPrefix = "",
   forceOrdered = NULL,
   responseType = "newResponses"
 )
@@ -21,7 +21,7 @@ dictGenerator(
 
 \item{expandOptions}{logical. If TRUE, the dictionary will have one row per answer option. if FALSE, it will be 1 row per question.}
 
-\item{questionPrefix}{character that identifies questions}
+\item{questionPrefix}{character that identifies questions if not included in contentful. Default "".}
 
 \item{forceOrdered}{vector of ordered questions that are from a non-ordered types}
 

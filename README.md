@@ -4,7 +4,6 @@
 # sensataDataProg
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 This package is a WIP that has the functions needed to clean and
@@ -37,5 +36,5 @@ microdatos:
 ``` r
 library(sensataDataProg)
 
-diccFunction(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
+dictGenerator(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
 ```

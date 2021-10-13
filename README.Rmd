@@ -43,6 +43,6 @@ Este es un ejemplo básico que muestra cómo crear un diccionario de los microda
 ```{r example, eval=FALSE}
 library(sensataDataProg)
 
-diccFunction(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
+dictGenerator(dat = pathOfMongoCsvFile, f = pathToSaveDictionaries )
 
 ```
