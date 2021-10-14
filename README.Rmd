@@ -43,6 +43,7 @@ Este es un ejemplo básico que muestra cómo preparar datos raw de la plataforma
 
 ```{r example, eval=FALSE}
 library(sensataDataProg)
+# this automatically loads tidyverse and labelled
 
 rawData <- sensataDataProg::sensataExample
 

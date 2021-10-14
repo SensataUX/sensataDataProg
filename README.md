@@ -37,6 +37,7 @@ plataforma sensata (datos incluidos como ejemplo en el paquete):
 
 ``` r
 library(sensataDataProg)
+# this automatically loads tidyverse and labelled
 
 rawData <- sensataDataProg::sensataExample
 
