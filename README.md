@@ -23,8 +23,13 @@ No se va a publicar en CRAN, solo se puede instalar de
 
 ``` r
 # install.packages("devtools")
-# Don't run this on a script, only on console so you don't save your PAT in a script:
-devtools::install_github("GaborioSensata/sensataDataProg", ref = "main", auth_token = "ENTER_HERE_YOUR_PAT")
+# install.packages("credentials")
+
+credentials::set_github_pat(force_new = T, validate = T)
+
+# you will get a prompt here, enter your github PAT
+library(devtools)
+install_github("GaborioSensata/sensataDataProg", ref = "main", auth_token = github_pat())
 ```
 
 ## Example
@@ -62,5 +67,5 @@ intData <- intData %>% makeFactors(dictionary = Dict,
 
 ## TO-DO
 
--   Learn how to use a stored PAT with package credentials
 -   Create vignettes
+-   Create tests
