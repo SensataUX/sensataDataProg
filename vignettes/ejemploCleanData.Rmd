@@ -24,7 +24,7 @@ Esta viñeta presenta un ejemplo de las principales funciones del paquete sensat
 El paquete se debe instalar de github. Este también instala todas las dependencias (tidyverse y labelled)
 
 ```{r setup}
-devtools::install_github("GaborioSensata/sensataDataProg", build_vignettes = F, force = T)
+# install_github("https://github.com/GaborioSensata/sensataDataProg", ref = "main", auth_token = github_pat())
 library(sensataDataProg)
 ```
 
