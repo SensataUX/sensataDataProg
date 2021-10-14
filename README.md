@@ -15,14 +15,16 @@ datos de la plataforma Sensata.
 ## Installation
 
 It will not be publish on CRAN, you can only install it from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/) with a Personal Access Token (create one
+that expires soon):
 
 No se va a publicar en CRAN, solo se puede instalar de
-[GitHub](https://github.com/) con:
+[GitHub](https://github.com/) con un token de acceso personal (PAT):
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("GaborioSensata/sensataDataProg")
+# Don't run this on a script, only on console so you don't save your PAT in a script:
+devtools::install_github("GaborioSensata/sensataDataProg", ref = "main", auth_token = "ENTER_HERE_YOUR_PAT")
 ```
 
 ## Example
@@ -59,4 +61,5 @@ intData <- intData %>% makeFactors(dictionary = Dict,
 
 ## TO-DO
 
+-   Learn how to use a stored PAT with package credentials
 -   Create vignettes
