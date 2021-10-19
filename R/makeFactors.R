@@ -140,7 +140,7 @@ makeFactors <- function(
           str_replace_all(" ", "_") %>%
           str_replace_all("[^a-zA-Z0-9_]", "") %>%
           str_trunc(30, ellipsis = "")
-        df[[colName]] <- if_else(str_detect(df[[v]], o), multChoiceText[1], multChoiceText[2])
+        df[[colName]] <- if_else(str_detect(df[[v]], o), 1, 0)
         df <- df %>% relocate(all_of(colName), .after = all_of(v))
       }
       df <- df %>% select(!starts_with("MUL"))
