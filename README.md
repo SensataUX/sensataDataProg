@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sensataDataProg
+# sensataDataProg <img src="man/figures/sensata_logo_white.png" align="right" width="120" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -29,7 +29,7 @@ credentials::set_github_pat(force_new = T, validate = T)
 
 # you will get a prompt here, enter your github PAT
 library(devtools)
-install_github("GaborioSensata/sensataDataProg", ref = "main", auth_token = github_pat())
+install_github(repo = "https://github.com/GaborioSensata/sensataDataProg", ref = "main", auth_token = github_pat())
 ```
 
 ## Example
@@ -67,5 +67,6 @@ intData <- intData %>% makeFactors(dictionary = Dict,
 
 ## TO-DO
 
+-   Create weights
 -   Create vignettes
 -   Create tests
