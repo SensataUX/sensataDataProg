@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sensataDataProg <img src="man/figures/sensata_logo_white.png" align="right" width="120" />
+# sensataDataProg <img src="man/figures/sensata-small-logo-512x512.png" align="right" width="120" />
 
 <!-- badges: start -->
 <!-- badges: end -->
