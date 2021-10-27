@@ -9,4 +9,5 @@
 #'   \item{othercols}{other metadata}
 #' }
 #' @source hgsLiveRaw with a fake params.test
+#' @export
 "sensataExample"
