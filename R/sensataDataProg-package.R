@@ -17,6 +17,7 @@
 #' Además incluye funciones para otros procesamientos de datos que solemos hacer:
 #' - scrubPeaks: eliminar picos atípicos
 #' - translateFactors: traducir datos de un idioma a otro
+#' - extractMetaData: Extraer metadatos para archivo de seguimiento
 #'
 #' @source \url{https://github.com/GaborioSensata/sensataDataProg}
 #'

@@ -3,6 +3,7 @@
 export(cleanCols)
 export(dictGenerator)
 export(dividethou_fun)
+export(extractMetaData)
 export(makeFactors)
 export(scrubPeaks)
 export(scrubRows)

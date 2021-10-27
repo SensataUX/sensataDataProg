@@ -30,6 +30,7 @@ Además incluye funciones para otros procesamientos de datos que solemos hacer:
 \itemize{
 \item scrubPeaks: eliminar picos atípicos
 \item translateFactors: traducir datos de un idioma a otro
+\item extractMetaData: Extraer metadatos para archivo de seguimiento
 }
 }
 
