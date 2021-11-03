@@ -18,9 +18,19 @@ selectCols(
 \arguments{
 \item{df}{data downloaded from Mongo, cleaned with cleanData.R, scrubbed with scrubData.R and prepared with factorSensata.R.}
 
-\item{dropTotalTime}{if TRUE it drops totalTimeMin variable.}
+\item{dropGeo}{if TRUE will drop coordinates (lat & long)}
 
-\item{dropQuestionTime}{if TRUE drops q_time variables}
+\item{geoCoordinates}{if TRUE will drop geo.coordinates columns, instead of lat & long}
+
+\item{dropParams}{if TRUE will drop all columns that start with params}
+
+\item{dropUserData}{if TRUE will drop fingerprint and sensataId}
+
+\item{dropMetaData}{if TRUE will drop createdAt, surveyId and surveyName}
+
+\item{dropTotalTime}{if TRUE it drops totalTimeMin column}
+
+\item{dropQuestionTime}{if TRUE drops q_time columns}
 }
 \value{
 Dataframe ready for client.
@@ -29,7 +39,7 @@ Dataframe ready for client.
 This function eliminates most metadata from the dataset. This is basically a wrapper for tidyverse::select()
 }
 \examples{
-bogData1 <- bogData1 \%>\% scrubData(dup = F, ageVar = "EVCS2", ageVal = "Menos de 18 años", geoloc = T)
+TBD
 }
 \author{
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}

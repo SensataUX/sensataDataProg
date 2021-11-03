@@ -1,4 +1,4 @@
-# selectCols.R V1
+# s electCols.R V1
 # Description: This function eliminates the unnecesary metadata columns and renames the columns from mongo to the identifier, according to the dictionary.
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Jan/19/2021
@@ -17,8 +17,13 @@
 #'
 #' This function eliminates most metadata from the dataset. This is basically a wrapper for tidyverse::select()
 #' @param df data downloaded from Mongo, cleaned with cleanData.R, scrubbed with scrubData.R and prepared with factorSensata.R.
-#' @param dropTotalTime if TRUE it drops totalTimeMin variable.
-#' @param dropQuestionTime if TRUE drops q_time variables
+#' @param dropGeo if TRUE will drop coordinates (lat & long)
+#' @param geoCoordinates if TRUE will drop geo.coordinates columns, instead of lat & long
+#' @param dropParams if TRUE will drop all columns that start with params
+#' @param dropUserData if TRUE will drop fingerprint and sensataId
+#' @param dropMetaData if TRUE will drop createdAt, surveyId and surveyName
+#' @param dropTotalTime if TRUE it drops totalTimeMin column
+#' @param dropQuestionTime if TRUE drops q_time columns
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe ready for client.
@@ -26,7 +31,7 @@
 #' @import tidyverse
 #'
 #' @examples
-#' bogData1 <- bogData1 %>% scrubData(dup = F, ageVar = "EVCS2", ageVal = "Menos de 18 años", geoloc = T)
+#' TBD
 #' @export
 #'
 # REV: no veo muy bien la necesidad de tener este archivo, o al menos no de esta forma... lo ve´ria más útil si agrupamos así:
@@ -40,7 +45,9 @@ selectCols <- function(df,
                        dropMetaData = T,
                        dropTotalTime = T,
                        dropQuestionTime = T){
-
+  if(dropGeo == FALSE && geoCoordinates == T){
+    rlang::warn("You set geoCoordinates to TRUE, but you said you didn't want to drop geo data, check what you want")
+  }
   dropVec <- vector()
   if(dropGeo && geoCoordinates){
     dropVec <- c("geolocation.coordinates")
@@ -64,7 +71,10 @@ selectCols <- function(df,
   if(dropQuestionTime){
     df <- df %>% select(!(ends_with("_time")))
   }
-  df <- df %>% select(-c(all_of(dropVec)))
+  if(!is_empty(dropVec)){
+    df <- df %>% select(-all_of(dropVec))
+  }
+
 
   return(df)
 }
