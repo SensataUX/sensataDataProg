@@ -49,10 +49,11 @@ extractMetaData <- function(df = intData,
 
   # Create columns -------
   Campaign <- tail(df$surveyName, 1)
-  NQuestions <- max(as.integer(Dict$order))+1
+  NQuestions <- max(as.integer(dict$order))+1
   medianTime <- median(df$totalTimeMin, na.rm = T)
-  completeSurveys <- attr(df, "numInitial")
-
+  # TODO: should it be all collected data or only from those params? Right now it is only from params
+  # completeSurveys <- attr(df, "numInitial")
+  completeSurveys <- nrow(df, "numInitial")
   # Create table -------
   out <- tibble(Campaign ,
                 Stage = stage,
