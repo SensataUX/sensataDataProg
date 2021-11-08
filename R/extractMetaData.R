@@ -1,10 +1,10 @@
-# extractMetaData.R V0.0.1
+# extractMetaData.R V0.0.2
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Oct/27/2021
 # Modified by: Gabriel N. Camargo-Toledo
 # Modified on: Oct/27/2021
 # Contact: gcamargo@sensata.io
-# Sensata Asus VivoBook PopOs! 21.04 8gb Ram R4.1.1
+# Sensata Asus VivoBook PopOs! 21.04 8gb Ram R4.1.2
 # Requires: tidyverse
 # Input: Interim data after scrubRows.R
 # Input: Dictionary created using dictGenerator.R
@@ -15,9 +15,9 @@
 #' This function creates table to fill out metadata on https://docs.google.com/spreadsheets/d/1CdSqvX3Hhayk_NGvr9eqDeAlA8XG9BX_-Exm5K3RKlI/edit#gid=2106088199
 #' @param df Interim dataset after scrubRows.r
 #' @param dict Dictionary created using dictGenerator.R
-#' @param stage pilot or live collection for param.utm_campaign
-#' @param source wa, fb, email, etc for param.utm_source
-#' @param medium cpc, referral, etc for param.utm_medium
+#' @param stage pilot or live collection for params.utm_campaign
+#' @param source wa, fb, email, etc for params.utm_source
+#' @param medium cpc, referral, etc for params.utm_medium
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return 1-row metadata for columns A to H (except lang)
@@ -41,10 +41,10 @@ extractMetaData <- function(df = intData,
     df <- df %>% filter(params.utm_campaign == stage)
   }
   if(!is.null(source)){
-    df <- df %>% filter(param.utm_source == source)
+    df <- df %>% filter(params.utm_source == source)
   }
   if(!is.null(medium)){
-    df <- df %>% filter(param.utm_medium == medium)
+    df <- df %>% filter(params.utm_medium == medium)
   }
 
   # Create columns -------
