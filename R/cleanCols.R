@@ -7,7 +7,7 @@
 # Contact: gcamargo@sensata.io
 # Sensata Asus VivoBook PopOs! 21.04 8gb Ram R4.1.1
 # Requires: tidyverse, labelled
-# Input: data from sensata platform using contentful+mongoDb. Latest data architecture of newResponses.
+# Input: data from sensata platform using contentful+mongoDb. Latest data architecture of newResponses or structuredResponses.
 # Input: Dictionary created using dictGenerator.R
 # Output: microdata as an object in the current R session.
 

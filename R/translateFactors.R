@@ -91,7 +91,6 @@ translateFactors <- function(
 
     # Creating levels and labels of factors and columns for multiple choice -------------
     # Single choice questions ------
-    #TODO: Add emojis labels
     if(!(isMultiple) && isClose){
 
       lab <- c(dictTo[["options"]], skipQuestionString)
@@ -113,6 +112,7 @@ translateFactors <- function(
         lev <- levels(factor(df[[v]]))
       }
       #Adding emoji labels
+      #TODO: Add emojis labels argument
       if(dictTo[["type"]][1] == "emojiBubbles"){
         rlang::inform(paste0(v, " is emojiBubbles, the labels will be: crying, sad, neutral, smiling, very happy. If other emojis, need to fix"))
         lab <- c("Crying", "Sad", "Neutral", "Smiling", "Very happy", skipQuestionString)
@@ -132,7 +132,10 @@ translateFactors <- function(
 
     # Multiple choice questions ------
     if(isMultiple && !isSorting){
-      rlang::inform(paste0(v," is multiple choice, should be translated by hand after"))
+      rlang::inform(paste0(v," is multiple choice, check that translation is correct"))
+      for(i in c(1:dictFrom$numberOfOptions[1])){
+        df[[v]] <- df[[v]] %>% str_replace(pattern = dictFrom[["options"]][i], replacement = dictTo[["options"]][i])
+      }
       intoVec <- paste0("MUL", nOptions)
       df <- df %>% separate(col = v,
                             into = c(intoVec),
@@ -157,7 +160,10 @@ translateFactors <- function(
 
     # Sorting questions -----
     if(isMultiple && isSorting){
-      rlang::inform(paste0(v," is multiple choice, should be translated by hand after"))
+      rlang::inform(paste0(v," is multiple choice, check that translation is correct"))
+      for(i in c(1:dictFrom$numberOfOptions[1])){
+        df[[v]] <- df[[v]] %>% str_replace(pattern = dictFrom[["options"]][i], replacement = dictTo[["options"]][i])
+      }
       intoVec <- paste0(v, "_position_", nOptions)
       df <- df %>% separate(col = v,
                             into = c(intoVec),
