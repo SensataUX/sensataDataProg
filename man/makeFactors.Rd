@@ -9,7 +9,8 @@ makeFactors(
   dictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta",
-  multChoiceText = c(1, 0)
+  multChoiceText = c(1, 0),
+  dummyMultiChoice = T
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ makeFactors(
 \item{skipQuestionString}{value that represents the skipped questions. By default "Saltar pregunta"}
 
 \item{multChoiceText}{A two element vector that determines text of multiple choice questions. By defaul c(1,0). Commonly used ones are c("Yes", "No") or c("Sí", "No"). ORDER MATTERS!}
+
+\item{dummyMultiChoice}{logic, if TRUE (default), it will create a dummy column for each option on multiple choice questions. Usually turned off when making factors after translation.}
 }
 \value{
 Dataframe with questions in format that is analysis friendly.

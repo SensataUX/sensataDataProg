@@ -22,6 +22,7 @@
 #' @param questionPrefix Character that identifies questions
 #' @param skipQuestionString value that represents the skipped questions. By default "Saltar pregunta"
 #' @param multChoiceText A two element vector that determines text of multiple choice questions. By defaul c(1,0). Commonly used ones are c("Yes", "No") or c("Sí", "No"). ORDER MATTERS!
+#' @param dummyMultiChoice logic, if TRUE (default), it will create a dummy column for each option on multiple choice questions. Usually turned off when making factors after translation.
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with questions in format that is analysis friendly.
@@ -37,7 +38,8 @@ makeFactors <- function(
   dictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta",
-  multChoiceText = c(1,0)
+  multChoiceText = c(1,0),
+  dummyMultiChoice = T
 ) {
 
 
@@ -126,34 +128,36 @@ makeFactors <- function(
     }
 
     # Multiple choice questions ------
-    if(isMultiple && !isSorting){
-      intoVec <- paste0("MUL", nOptions)
-      df <- df %>% separate(col = v,
-                            into = c(intoVec),
-                            sep = "/",
-                            remove = F,
-                            fill = "right")
+    if(dummyMultiChoice){
+      if(isMultiple && !isSorting){
+        intoVec <- paste0("MUL", nOptions)
+        df <- df %>% separate(col = v,
+                              into = c(intoVec),
+                              sep = "/",
+                              remove = F,
+                              fill = "right")
 
-      optionsVec <- dict[["options"]]
-      for(o in optionsVec){
-        colName <- paste0(v,"_",o) %>%
-          str_replace_all(" ", "_") %>%
-          str_replace_all("[^a-zA-Z0-9_]", "") %>%
-          str_trunc(30, ellipsis = "")
-        df[[colName]] <- if_else(str_detect(df[[v]], o), multChoiceText[1], multChoiceText[2])
-        df <- df %>% relocate(all_of(colName), .after = all_of(v))
+        optionsVec <- dict[["options"]]
+        for(o in optionsVec){
+          colName <- paste0(v,"_",o) %>%
+            str_replace_all(" ", "_") %>%
+            str_replace_all("[^a-zA-Z0-9_]", "") %>%
+            str_trunc(30, ellipsis = "")
+          df[[colName]] <- if_else(str_detect(df[[v]], o), multChoiceText[1], multChoiceText[2])
+          df <- df %>% relocate(all_of(colName), .after = all_of(v))
+        }
+        df <- df %>% select(!starts_with("MUL"))
       }
-      df <- df %>% select(!starts_with("MUL"))
-    }
 
-    # Sorting questions -----
-    if(isMultiple && isSorting){
-      intoVec <- paste0(v, "_position_", nOptions)
-      df <- df %>% separate(col = v,
-                            into = c(intoVec),
-                            sep = "/",
-                            remove = F,
-                            fill = "right")
+      # Sorting questions -----
+      if(isMultiple && isSorting){
+        intoVec <- paste0(v, "_position_", nOptions)
+        df <- df %>% separate(col = v,
+                              into = c(intoVec),
+                              sep = "/",
+                              remove = F,
+                              fill = "right")
+      }
     }
     if(dict[["isForceOrdered"]][1] && !is.na(dict[["isForceOrdered"]][1])){
       # lev <- levels(df[[v]])
