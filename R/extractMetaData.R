@@ -53,7 +53,7 @@ extractMetaData <- function(df = intData,
   medianTime <- median(df$totalTimeMin, na.rm = T)
   # TODO: should it be all collected data or only from those params? Right now it is only from params
   # completeSurveys <- attr(df, "numInitial")
-  completeSurveys <- nrow(df, "numInitial")
+  completeSurveys <- nrow(df)
   # Create table -------
   out <- tibble(Campaign ,
                 Stage = stage,
