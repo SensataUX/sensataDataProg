@@ -9,9 +9,9 @@ scrubPeaks(df, iniPico = NULL, finPico = NULL, mediumToScrub = NULL)
 \arguments{
 \item{df}{microdata after cleanCols and scrubRows}
 
-\item{iniPico}{datetime beginning of peak ex. "2021-08-06 07:00:00", default: NULL if you need to drop all surveys from una medium.}
+\item{iniPico}{datetime beginning of peak ex. "2021-08-06 07:00:00", default: NULL if you need to drop all surveys from one medium.}
 
-\item{finPico}{datetime beginning of peak ex. "2021-08-09 07:00:00", default: NULL if you need to drop all surveys from una medium.}
+\item{finPico}{datetime beginning of peak ex. "2021-08-09 07:00:00", default: NULL if you need to drop all surveys from one medium.}
 
 \item{mediumToScrub}{medium value to scrub ex. "referral", default: NULL if you need to drop all surveys from a date range}
 }

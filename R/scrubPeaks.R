@@ -19,8 +19,8 @@
 #'
 #' This function creates the microdata after supressing atypical peaks
 #' @param df microdata after cleanCols and scrubRows
-#' @param iniPico datetime beginning of peak ex. "2021-08-06 07:00:00", default: NULL if you need to drop all surveys from una medium.
-#' @param finPico datetime beginning of peak ex. "2021-08-09 07:00:00", default: NULL if you need to drop all surveys from una medium.
+#' @param iniPico datetime beginning of peak ex. "2021-08-06 07:00:00", default: NULL if you need to drop all surveys from one medium.
+#' @param finPico datetime beginning of peak ex. "2021-08-09 07:00:00", default: NULL if you need to drop all surveys from one medium.
 #' @param mediumToScrub medium value to scrub ex. "referral", default: NULL if you need to drop all surveys from a date range
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
