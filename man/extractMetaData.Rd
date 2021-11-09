@@ -17,11 +17,11 @@ extractMetaData(
 
 \item{dict}{Dictionary created using dictGenerator.R}
 
-\item{stage}{pilot or live collection for param.utm_campaign}
+\item{stage}{pilot or live collection for params.utm_campaign}
 
-\item{source}{wa, fb, email, etc for param.utm_source}
+\item{source}{wa, fb, email, etc for params.utm_source}
 
-\item{medium}{cpc, referral, etc for param.utm_medium}
+\item{medium}{cpc, referral, etc for params.utm_medium}
 }
 \value{
 1-row metadata for columns A to H (except lang)
