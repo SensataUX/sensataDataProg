@@ -62,7 +62,8 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
     select(all_of(colsToKeep),
            starts_with("params"),
            contains("selected"),
-           ends_with(".timeToCompletion"))
+           ends_with(".timeToCompletion")) %>%
+    select(where(not_all_na))
 
   if (removeParams) {
     df <- df %>% select(-starts_with('params'))
