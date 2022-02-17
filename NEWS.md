@@ -1,3 +1,8 @@
+# sensataDataProg 1.0.1
+
+* Adding misc functions for selecting columns with all NA and any NA
+* Using that function on cleanCols so empty columns are erased on interim data
+
 # sensataDataProg 1.0.0
 
 * Added a `NEWS.md` file to track changes to the package.
