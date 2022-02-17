@@ -5,7 +5,7 @@
 \alias{sensataExample}
 \title{Raw sensata data example.}
 \format{
-A data frame with 590 rows and 595 variables:
+A data frame with 590 rows and 609 variables:
 \describe{
 \item{newresponses}{Information on responses}
 \item{othercols}{other metadata}
