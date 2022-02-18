@@ -27,7 +27,6 @@
 
 # Generates a dictionary with a table structure using a dataset.
 # WARNING: All questions need to be in the same order. If the instrument changes during collection it will break.
-# Uses the current newResponses.q1.identifier structure
 # TODO: Fix dictGenerator example
 
 dictGenerator <- function(df,
