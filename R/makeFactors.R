@@ -20,6 +20,7 @@
 #' @param df data downloaded from Mongo, cleaned with cleanData.R and scrubbed with scrubData.R
 #' @param dictionary dictionary created using dictGenerator.R in expanded form without screens
 #' @param questionPrefix Character that identifies questions
+#' @param specialSkipValue If you provide an integer (normally 99) it will create labelled_spss (or stata) variables where the skip string has the value provided. Defaults to NULL
 #' @param skipQuestionString value that represents the skipped questions. By default "Saltar pregunta"
 #' @param multChoiceText A two element vector that determines text of multiple choice questions. By defaul c(1,0). Commonly used ones are c("Yes", "No") or c("Sí", "No"). ORDER MATTERS!
 #' @param dummyMultiChoice logic, if TRUE (default), it will create a dummy column for each option on multiple choice questions. Usually turned off when making factors after translation.
@@ -38,6 +39,8 @@ makeFactors <- function(
   dictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta",
+  addSpecialSkipValue = F,
+  specialSkipValue = NULL,
   multChoiceText = c(1,0),
   dummyMultiChoice = T
 ) {
@@ -45,6 +48,11 @@ makeFactors <- function(
 
   # Message about skip question string
   rlang::inform("This function assumes that skipped questions are coded as S99 in mongo, if not you need to change the function.")
+
+  # Error if special value is not numeric
+  if (!is.numeric(specialSkipValue) && !is.null(specialSkipValue)) {
+    rlang::abort("specialSkipValue is not a number, makeFactors will not work")
+  }
 
   # Saving data attributes of sample size (number of rows) for report ----------
   at <- attributes(df)
@@ -164,11 +172,20 @@ makeFactors <- function(
       # lab <- levels(df[[v]])
       dict[["isOrdered"]] <- T
     }
+    # Factor -------
     if(!(isMultiple) && isClose){
       df[[v]] <- factor(df[[v]],
                         levels = lev,
                         labels = lab,
                         ordered = as.logical(dict[["isOrdered"]][1]))
+    }
+   # If special value provided -----
+    if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
+      lev <- lev[-length(lev)]
+      lev <- c(lev, specialSkipValue)
+      names(lev) <- lab
+      df[[v]] <- df[[v]] %>%
+        labelled_spss(labels = lev)
     }
   }
   # Label vars --------------------------------------------------------------
