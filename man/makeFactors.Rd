@@ -9,6 +9,8 @@ makeFactors(
   dictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta",
+  addSpecialSkipValue = F,
+  specialSkipValue = NULL,
   multChoiceText = c(1, 0),
   dummyMultiChoice = T
 )
@@ -21,6 +23,8 @@ makeFactors(
 \item{questionPrefix}{Character that identifies questions}
 
 \item{skipQuestionString}{value that represents the skipped questions. By default "Saltar pregunta"}
+
+\item{specialSkipValue}{If you provide an integer (normally 99) it will create labelled_spss (or stata) variables where the skip string has the value provided. Defaults to NULL}
 
 \item{multChoiceText}{A two element vector that determines text of multiple choice questions. By defaul c(1,0). Commonly used ones are c("Yes", "No") or c("Sí", "No"). ORDER MATTERS!}
 

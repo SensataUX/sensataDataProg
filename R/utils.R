@@ -26,7 +26,7 @@ dividethou_fun <- function(x) {
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return selects all variables where ALL rows are NA
-#' @keywords divide sensata seconds segundos
+#' @keywords sensata selecter na
 #'
 #'
 #' @examples
@@ -43,7 +43,7 @@ not_all_na <- function(x) any(!is.na(x))
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return selects all variables where ALL rows are NA
-#' @keywords divide sensata seconds segundos
+#' @keywords sensata selecter na
 #'
 #'
 #' @examples
@@ -53,4 +53,29 @@ not_all_na <- function(x) any(!is.na(x))
 
 not_any_na <- function(x) all(!is.na(x))
 
+
+#' Function to rescale a vector to 0-100 scale
+#'
+#' This function takes any vector and rescales it in a linear way so that the new range is 0 to 100. Useful specially when creating indicators
+#' @param x numeric vector to rescale to 0-100
+#'
+#' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
+#' @return numeric vector in a 0-100 scale
+#' @keywords rescale sensata indicators
+#'
+#'
+#' @examples
+#' x <- c(1,2,3,1,3,2,4,5,4,3,2,5,4,3,2,1,4,5)
+#' from0to100(x)
+#' @export
+
+
+from0to100 <- function(x){
+  if(max(x, na.rm = T) == 1 && min(x, na.rm = T) == 0){
+    o = x*100
+  } else {
+    o = (1-((max(x, na.rm = T)-x)/(max(x, na.rm = T)-1)))*100
+  }
+  o
+}
 
