@@ -1,11 +1,11 @@
-#' Miliseconds to seconds (or divide by a thousand)
+#' Divide by a thousand (usually to convert milliseconds to seconds)
 #'
-#' This function divides any vector by a thousand, we use it to convert seconds to milliseconds
-#' @param x vector to convert from miliseconds to seconds (or divide by a thousand)
+#' This function divides any vector by a thousand, we use it regularly to convert seconds to milliseconds
+#' @param x vector to divide by a thousand (ex. from milliseconds to seconds)
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
-#' @return vector of seconds or divided by a thousand
-#' @keywords divide sensata seconds segundos
+#' @return vector to be divided by a thousand
+#' @keywords divide sensata seconds segundos thousands milliseconds
 #'
 #'
 #' @examples
@@ -15,6 +15,26 @@
 
 dividethou_fun <- function(x) {
   r <- x/1000
+  r
+}
+
+#' Divide by a hundred (usually to change percentage to proportion)
+#'
+#' This function divides any vector by a hundred, we use it regularly to convert percentage to proportion
+#' @param x vector to divide by a hundred (ex. from percentage to proportion)
+#'
+#' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
+#' @return vector to be divided by a hundred
+#' @keywords divide sensata hundreds percentage proportion
+#'
+#'
+#' @examples
+#' dividethou_fun(data$percentage)
+#' @export
+
+
+dividehun_fun <- function(x) {
+  r <- x/100
   r
 }
 

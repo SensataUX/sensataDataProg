@@ -2,6 +2,7 @@
 
 export(cleanCols)
 export(dictGenerator)
+export(dividehun_fun)
 export(dividethou_fun)
 export(extractMetaData)
 export(from0to100)

@@ -2,18 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{dividethou_fun}
 \alias{dividethou_fun}
-\title{Miliseconds to seconds (or divide by a thousand)}
+\title{Divide by a thousand (usually to convert milliseconds to seconds)}
 \usage{
 dividethou_fun(x)
 }
 \arguments{
-\item{x}{vector to convert from miliseconds to seconds (or divide by a thousand)}
+\item{x}{vector to divide by a thousand (ex. from milliseconds to seconds)}
 }
 \value{
-vector of seconds or divided by a thousand
+vector to be divided by a thousand
 }
 \description{
-This function divides any vector by a thousand, we use it to convert seconds to milliseconds
+This function divides any vector by a thousand, we use it regularly to convert seconds to milliseconds
 }
 \examples{
 dividethou_fun(data$q1time)
@@ -22,6 +22,8 @@ dividethou_fun(data$q1time)
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}
 }
 \keyword{divide}
+\keyword{milliseconds}
 \keyword{seconds}
 \keyword{segundos}
 \keyword{sensata}
+\keyword{thousands}
