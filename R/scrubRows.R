@@ -1,4 +1,4 @@
-# scrubRows.R V1
+# scrubRows.R V1.1
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Jan/19/2021
 # Modified by: Gabriel N. Camargo-Toledo
@@ -21,7 +21,7 @@
 #' @param timeMin minimum amount of minutes that the survey should have. Default 2.5 mins. If no scrubbing by time is required make it 0.
 #' @param geoloc logical, if TRUE it will scrub surveys that have no geolocation.
 #' @param ageVar name of variable of age variable, if empty then it will not scrub by age.
-#' @param ageVal value of age that should be excluded
+#' @param ageVal value(s) of age that should be excluded, if ageVar numeric, or more than one ageVar should be scrubbed, provide all values as a vector.
 #' @param testParamName character object of name of test param, usually test (the full column is called params.test)
 #' @param completeVars character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.
 #'

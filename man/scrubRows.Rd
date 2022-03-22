@@ -26,7 +26,7 @@ scrubRows(
 
 \item{ageVar}{name of variable of age variable, if empty then it will not scrub by age.}
 
-\item{ageVal}{value of age that should be excluded}
+\item{ageVal}{value(s) of age that should be excluded, if ageVar numeric, or more than one ageVar should be scrubbed, provide all values as a vector.}
 
 \item{testParamName}{character object of name of test param, usually test (the full column is called params.test)}
 
