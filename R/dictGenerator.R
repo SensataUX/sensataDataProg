@@ -1,10 +1,10 @@
-# DictGenerator V1
+# DictGenerator V1.0.1
 # Created by: Gabriel N. Camargo-Toledo
 # Created on: Aug/18/2021
 # Modified by: Gabriel N. Camargo-Toledo
-# Modified on: Oct/13/2021
+# Modified on: Apr/01/2022
 # Contact: gcamargo@sensata.io
-# Sensata Asus VivoBook Pop!_OS 21.04 8gb Ram R4.1.0
+# Sensata Asus VivoBook Pop!_OS 21.10 8gb Ram R4.1.2
 
 #' Function to create sensata dictionary
 #'
@@ -100,6 +100,10 @@ dictGenerator <- function(df,
   output <- output %>% rename("order" = "qid")
   output$id <- output$id %>% str_replace(".", "")
   output <- output %>% filter(!is.na(order))
+
+  # fix bilderset
+  output$options[output$type == "bilderset"] <- output$options[output$type == "bilderset"] %>% str_extract(".+?(?=//)")
+
   # Output ------------------------------------------------------------------
   return(output)
 
