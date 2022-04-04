@@ -42,7 +42,7 @@ dictGenerator <- function(df,
   }
   # warn if forceOrdered is NULL:
   if(is.null(forceOrdered)){
-    rlang::inform("No forceOrdered vector provided, this usually is not right, check with questions are ordered among traditional or other types.")
+    rlang::inform("No forceOrdered vector provided, this usually incorrect, check with questions are ordered among traditional or other types.")
   }
 
   # Fill up and reduce to one row of data
