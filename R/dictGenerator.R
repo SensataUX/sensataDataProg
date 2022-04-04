@@ -38,7 +38,7 @@ dictGenerator <- function(df,
   # warn about answer type:
   if(responseType == "newResponses"){
     rlang::warn("newResponses responseType selected, so all questions need to be in the same order for all individuals.
-                If there have been order changes on the questionnaire use strucResponses responseType ")
+                If there have been order changes on the questionnaire use strucResponses responseType")
   }
 
 
@@ -108,7 +108,7 @@ dictGenerator <- function(df,
   output <- output %>% filter(!is.na(order))
 
   # fix bilderset
-  output$options[output$type == "bilderset" & str_detect(output$options, "//")] <- output$options[output$type == "bilderset"] %>% str_extract(".+?(?=//)")
+  output$options[output$type == "bilderset" & str_detect(output$options, "//")] <- output$options[output$type == "bilderset" & str_detect(output$options, "//")] %>% str_extract(".+?(?=//)")
 
   # Output ------------------------------------------------------------------
   return(output)
