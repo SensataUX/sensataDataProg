@@ -26,7 +26,6 @@
 #' @export
 
 # Generates a dictionary with a table structure using a dataset.
-# WARNING: All questions need to be in the same order. If the instrument changes during collection it will break.
 # TODO: Fix dictGenerator example
 
 dictGenerator <- function(df,
@@ -35,6 +34,13 @@ dictGenerator <- function(df,
                           questionPrefix = "",
                           forceOrdered = NULL,
                           responseType = "newResponses"){
+
+  # warn about answer type:
+  if(responseType == "newResponses"){
+    rlang::warn("newResponses responseType selected, so all questions need to be in the same order for all individuals.
+                If there have been order changes on the questionnaire use strucResponses responseType ")
+  }
+
 
   # Fill up and reduce to one row of data
   df <- df %>% select(matches(responseType))
@@ -102,7 +108,7 @@ dictGenerator <- function(df,
   output <- output %>% filter(!is.na(order))
 
   # fix bilderset
-  output$options[output$type == "bilderset"] <- output$options[output$type == "bilderset"] %>% str_extract(".+?(?=//)")
+  output$options[output$type == "bilderset" & str_detect(output$options, "//")] <- output$options[output$type == "bilderset"] %>% str_extract(".+?(?=//)")
 
   # Output ------------------------------------------------------------------
   return(output)
