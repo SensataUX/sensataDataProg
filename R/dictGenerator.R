@@ -37,7 +37,7 @@ dictGenerator <- function(df,
 
   # warn about answer type:
   if(responseType == "newResponses"){
-    rlang::warn("newResponses responseType selected, so all questions need to be in the same order for all individuals.
+    rlang::inform("newResponses responseType selected, so all questions need to be in the same order for all individuals.
                 If there have been order changes on the questionnaire use strucResponses responseType")
   }
 
