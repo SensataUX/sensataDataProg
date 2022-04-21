@@ -40,7 +40,8 @@ translateFactors <- function(
 
 
   # Message about skip question string and options orders
-  rlang::inform("This function assumes that the options of questions are in the same order in the dictionaries. If not, you have to change the dictionaries. It also assumes that the identifiers are identical in the dictionaries.")
+  rlang::inform("This function assumes that the options of questions are in the same order and have the same amount of options in the dictionaries. If not, you have to change the dictionaries. It also assumes that the identifiers are identical in the dictionaries.")
+
   # Saving data attributes of sample size (number of rows) for report ----------
   at <- attributes(df)
   at <- at[grep("num", names(at))]
