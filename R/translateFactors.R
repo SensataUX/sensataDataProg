@@ -197,7 +197,7 @@ translateFactors <- function(
     as.list()
 
   tryCatch(
-    error = function(cnd) "Labels not of the same length, check what happened",
+    error = function(cnd) rlang::inform("Labels not of the same length, check what happened"),
     var_label(df) <- labList
     )
 
