@@ -56,7 +56,9 @@ translateFactors <- function(
   df["createdAt"] <- createdAt
 
   # Vector of only questions ------------------------------------------------
-  questionsVec <- df %>% select(contains(questionPrefix)) %>% names()
+  screensVec <- fromDictionary %>% filter(type == "screen")
+  screensVec <- screensVec$identifier
+  questionsVec <- df %>% select(contains(questionPrefix), -all_of(screensVec)) %>% names()
 
   # Loop over questions -----------------------------------------------------
   for(v in questionsVec){

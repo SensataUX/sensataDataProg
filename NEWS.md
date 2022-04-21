@@ -1,3 +1,7 @@
+# sensataDataProg 1.0.2
+Fix several bugs, including translateFactors screens problem
+
+
 # sensataDataProg 1.0.1
 
 * Adding util.R with functions for selecting columns with all NA and any NA
