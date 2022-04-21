@@ -1,7 +1,7 @@
-# translateFactors V1
+# translateFactors V1.0.1
 # Created by: Gabriel N. Camargo-Toledo
 # Modified by: Gabriel N. Camargo-Toledo
-# Modified on: Oct/13/2021
+# Modified on: Apr/21/2021
 # Contact: gcamargo@sensata.io
 # Sensata Asus VivoBook Pop!_OS 21.04 8gb Ram R4.1.1
 # TODO: Translate multiple option questions, possible solution on cuidado/scripts/cleaningData.R
@@ -196,7 +196,10 @@ translateFactors <- function(
     pivot_wider(names_from = identifier, values_from = question) %>%
     as.list()
 
-  var_label(df) <- labList
+  tryCatch(
+    error = function(cnd) "Labels not of the same length, check what happened",
+    var_label(df) <- labList
+    )
 
   # Recovering attributes for report ---------------------------------
   attributes(df) <- c(attributes(df), at)
