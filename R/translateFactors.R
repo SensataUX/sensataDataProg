@@ -93,7 +93,7 @@ translateFactors <- function(
     if(is.na(dictFrom[["altOption"]][1])){
       nOptions <- 1:dictFrom[["numberOfOptions"]][1]
     } else {
-      nOptions <- 1:(as.numeric(dictFrom[["numberOfOptions"]][1]+1))
+      nOptions <- 1:(as.numeric(dictFrom[["numberOfOptions"]][1])+1)
     }
 
 
