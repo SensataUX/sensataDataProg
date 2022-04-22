@@ -90,7 +90,13 @@ translateFactors <- function(
     isClose <- if_else(dictTo[["options"]][1] == "-" & dictTo[["numberOfOptions"]][1] == 0, FALSE, TRUE)
 
     #Number of options
-    nOptions <- 1:dictFrom[["numberOfOptions"]][1]
+    if(is.na(dictFrom[["altOption"]][1])){
+      nOptions <- 1:dictFrom[["numberOfOptions"]][1]
+    } else {
+      nOptions <- 1:(dictFrom[["numberOfOptions"]][1]+1)
+    }
+
+
 
     # Creating levels and labels of factors and columns for multiple choice -------------
     # Single choice questions ------
