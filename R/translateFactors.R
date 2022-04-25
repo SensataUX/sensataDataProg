@@ -130,7 +130,7 @@ translateFactors <- function(
       #Adding altOption to ordered vars
       if("altOption" %in% names(dictTo) && !is.na(dictTo[["altOption"]][1]) && dictTo[["isOrdered"]][1]){
         lab <- c(dictTo[["options"]], dictTo[["altOption"]][1], skipQuestionString)
-        lev <- c(1:(c(nOptions,(max(nOptions)+1))))
+        lev <- c(nOptions,(max(nOptions)+1))
       }
       #Adding altOption to non-ordered vars
       if("altOption" %in% names(dictTo) && !is.na(dictTo[["altOption"]][1]) && !(dictTo[["isOrdered"]][1])){
