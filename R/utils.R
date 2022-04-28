@@ -99,3 +99,27 @@ from0to100 <- function(x){
   o
 }
 
+#' Function to eliminate extra characters for conjoint
+#'
+#' This function eliminates extra characters, usually used for conjoint. For now it only eliminates the characters from the conjoint options field
+#' @param x conjoint options column (or character vector)
+#'
+#' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
+#' @return character vector without extra characters
+#' @keywords rescale sensata indicators
+#'
+#'
+#' @examples
+#' delExtraCar(cjData$conjoint.0.options)
+#' @export
+
+
+delExtraCar <- function(x) {
+  o <- x %>%
+    str_replace_all('","', "     ") %>%
+    str_replace_all("[[:punct:]]", "") %>%
+    str_replace_all("brbr", ", ") %>%
+    str_replace_all("     ", " / ")
+  o
+}
+
