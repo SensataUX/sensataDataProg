@@ -106,7 +106,7 @@ from0to100 <- function(x){
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return character vector without extra characters
-#' @keywords rescale sensata indicators
+#' @keywords clean characters sensata conjoint
 #'
 #'
 #' @examples

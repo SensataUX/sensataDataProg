@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.1
+Including conjoint functions, delExtraCar and conjoint2Tasks
+
 # sensataDataProg 1.0.2
 Fix several bugs, including translateFactors screens problem
 

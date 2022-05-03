@@ -21,6 +21,7 @@ delExtraCar(cjData$conjoint.0.options)
 \author{
 Gabriel N. Camargo-Toledo \email{gcamargo@sensata.io}
 }
-\keyword{indicators}
-\keyword{rescale}
+\keyword{characters}
+\keyword{clean}
+\keyword{conjoint}
 \keyword{sensata}
