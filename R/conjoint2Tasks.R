@@ -36,4 +36,6 @@ conjoint2Tasks <- function(df, nRounds, nInd) {
   df <- df %>%
     mutate(across(ends_with("timeToCompletion"),
                   as.numeric))
+
+  df
 }
