@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.2
+Include missing questions feature to scrubRows
+
 # sensataDataProg 1.1.1
 Including conjoint functions, delExtraCar and conjoint2Tasks
 
