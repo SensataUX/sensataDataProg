@@ -12,7 +12,9 @@ scrubRows(
   ageVar = NULL,
   ageVal = NULL,
   testParamName = NULL,
-  completeVars = NULL
+  completeVars = NULL,
+  missThreshold = NULL,
+  maxSkippedQs = NULL
 )
 }
 \arguments{
@@ -31,6 +33,8 @@ scrubRows(
 \item{testParamName}{character object of name of test param, usually test (the full column is called params.test)}
 
 \item{completeVars}{character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.}
+
+\item{maxSkippedQs}{maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.}
 }
 \value{
 Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum

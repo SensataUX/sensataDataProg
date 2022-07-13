@@ -24,6 +24,7 @@
 #' @param ageVal value(s) of age that should be excluded, if ageVar numeric, or more than one ageVar should be scrubbed, provide all values as a vector.
 #' @param testParamName character object of name of test param, usually test (the full column is called params.test)
 #' @param completeVars character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.
+#' @param maxSkippedQs maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum
@@ -47,7 +48,11 @@ scrubRows <- function(df,
                       ageVar = NULL,
                       ageVal = NULL,
                       testParamName = NULL,
-                      completeVars = NULL){
+                      completeVars = NULL,
+                      missThreshold = NULL,
+                      maxSkippedQs = NULL){
+
+
 
   # Erase test --------------------------------------------------------------
   numTest <- 0
@@ -103,7 +108,6 @@ scrubRows <- function(df,
     numAfterAge <- "NA"
   }
 
-
   # Complete vars -----------------------------------------------------------
   if(!is.null(completeVars)){
     selectVec <- df[completeVars] == "S99"
@@ -115,6 +119,15 @@ scrubRows <- function(df,
     numAfterCompleteVars <- nrow(df)
   } else {
     numAfterCompleteVars <- "NA"
+  }
+
+  # skippedQs -----------------------------------------------------------
+  if(!is.null(maxSkippedQs)){
+    df[[perdidos]] <-  apply(df, 1, function(y) sum(length(which(as.character(y) == "S99"))))
+    df <- df %>% filter(perdidos<=maxSkippedQs) %>% select(-c("perdidos"))
+    numAfterMissing <- nrow(df)
+  } else {
+    numAfterMissing <- "NA"
   }
 
 
@@ -129,6 +142,7 @@ scrubRows <- function(df,
   attr(df, "numAfterGeo") <- numAfterGeo
   attr(df, "numAfterAge") <- numAfterAge
   attr(df, "numAfterCompleteVars") <- numAfterCompleteVars
+  attr(df, "numAfterMissing") <- numAfterMissing
   attr(df, "numFinal") <- numFinal
 
   # output ------------------------------------------------------------------
