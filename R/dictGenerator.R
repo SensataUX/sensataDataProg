@@ -37,12 +37,18 @@ dictGenerator <- function(df,
 
   # warn about answer type if newResponses:
   if(responseType == "newResponses"){
-    rlang::inform("newResponses responseType selected, so all questions need to be in the same order for all individuals.
-                   If there have been order changes on the questionnaire use strucResponses responseType")
+    rlang::inform('_______________________________________________________________________________________
+                  You selected "newResponses" responseType , so all questions need to be in the same order for all individuals.
+                  If there have been order changes on the questionnaire use "strucResponses" responseType
+                  ______________________________________________________________________________________')
   }
   # warn if forceOrdered is NULL:
   if(is.null(forceOrdered)){
-    rlang::inform("No forceOrdered vector provided, this usually incorrect, check with questions are ordered among traditional or other types.")
+    rlang::inform('______________________________________________________________________________________
+                  You did not provide a forceOrdered vector, this is usually incorrect,
+                  check which questions are ordered among traditional or other types
+                  that are not intrinsically ordered.
+                  ______________________________________________________________________________________')
   }
 
   # Fill up and reduce to one row of data
