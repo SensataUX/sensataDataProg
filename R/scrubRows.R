@@ -51,8 +51,7 @@ scrubRows <- function(df,
                       testParamName = NULL,
                       completeVars = NULL,
                       maxSkippedQs = NULL,
-                      particularVal){
-
+                      particularVal = NULL){
 
 
   # Erase test --------------------------------------------------------------
