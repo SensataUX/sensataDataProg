@@ -122,8 +122,8 @@ scrubRows <- function(df,
 
   # skippedQs -----------------------------------------------------------
   if(!is.null(maxSkippedQs)){
-    df[[perdidos]] <-  NA
-    df[[perdidos]] <-  apply(df, 1, function(y) sum(length(which(as.character(y) == "S99"))))
+    df[["perdidos"]] <-  NA
+    df[["perdidos"]] <-  apply(df, 1, function(y) sum(length(which(as.character(y) == "S99"))))
     df <- df %>% filter(perdidos<=maxSkippedQs) %>% select(-c("perdidos"))
     numAfterMissing <- nrow(df)
   } else {
