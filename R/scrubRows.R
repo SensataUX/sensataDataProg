@@ -50,7 +50,8 @@ scrubRows <- function(df,
                       ageVal = NULL,
                       testParamName = NULL,
                       completeVars = NULL,
-                      maxSkippedQs = NULL){
+                      maxSkippedQs = NULL,
+                      particularVal){
 
 
 
