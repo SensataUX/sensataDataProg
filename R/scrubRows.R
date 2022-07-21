@@ -25,6 +25,7 @@
 #' @param testParamName character object of name of test param, usually test (the full column is called params.test)
 #' @param completeVars character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.
 #' @param maxSkippedQs maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.
+#' @param particularVal named vector, where name is the variable to be used as filter and the value is the value to be kept
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum
@@ -128,6 +129,16 @@ scrubRows <- function(df,
     numAfterMissing <- nrow(df)
   } else {
     numAfterMissing <- "NA"
+  }
+
+  # particularVal -----------------------------------------------------------
+  if(!is.null(particularVal)){
+    var <- names(particularVal)
+    val <- unname(particularVal)
+    df <- df %>% filter(var == var)
+    numAfterPartVal <- nrow(df)
+  } else {
+    numAfterPartVal <- "NA"
   }
 
 

@@ -13,7 +13,6 @@ scrubRows(
   ageVal = NULL,
   testParamName = NULL,
   completeVars = NULL,
-  missThreshold = NULL,
   maxSkippedQs = NULL
 )
 }
@@ -35,6 +34,8 @@ scrubRows(
 \item{completeVars}{character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.}
 
 \item{maxSkippedQs}{maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.}
+
+\item{particularVal}{named vector, where name is the variable to be used as filter and the value is the value to be kept}
 }
 \value{
 Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum
