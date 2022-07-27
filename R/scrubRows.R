@@ -135,7 +135,7 @@ scrubRows <- function(df,
   if(!is.null(particularVal)){
     var <- names(particularVal)
     val <- unname(particularVal)
-    df <- df %>% filter(var == var)
+    df <- df %>% filter(var == val)
     numAfterPartVal <- nrow(df)
   } else {
     numAfterPartVal <- "NA"
