@@ -52,7 +52,7 @@ scrubRows <- function(df,
                       testParamName = NULL,
                       completeVars = NULL,
                       maxSkippedQs = NULL,
-                      skipQuestionString = "S99"
+                      skipQuestionString = "S99",
                       particularVal = NULL){
 
 
