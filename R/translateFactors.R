@@ -197,6 +197,7 @@ translateFactors <- function(
   # Label vars --------------------------------------------------------------
   labList <- toDictionary %>%
     filter(type!="screen") %>%
+    filter(type!="conjoint") %>%
     filter(identifier %in% fromDictionary[["identifier"]]) %>%
     select("identifier", "question") %>%
     unique() %>%
