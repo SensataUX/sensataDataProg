@@ -25,6 +25,7 @@
 #' @param testParamName character object of name of test param, usually test (the full column is called params.test)
 #' @param completeVars character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.
 #' @param maxSkippedQs maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.
+#' @param skipQuestionString skip question string, by default S99
 #' @param particularVal named vector, where name is the variable to be used as filter and the value is the value to be kept
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
@@ -51,6 +52,7 @@ scrubRows <- function(df,
                       testParamName = NULL,
                       completeVars = NULL,
                       maxSkippedQs = NULL,
+                      skipQuestionString = "S99"
                       particularVal = NULL){
 
 
@@ -124,7 +126,7 @@ scrubRows <- function(df,
   # skippedQs -----------------------------------------------------------
   if(!is.null(maxSkippedQs)){
     df[["perdidos"]] <-  NA
-    df[["perdidos"]] <-  apply(df, 1, function(y) sum(length(which(as.character(y) == "S99"))))
+    df[["perdidos"]] <-  apply(df, 1, function(y) sum(length(which(as.character(y) == skipQuestionString))))
     df <- df %>% filter(perdidos<=maxSkippedQs) %>% select(-c("perdidos"))
     numAfterMissing <- nrow(df)
   } else {
