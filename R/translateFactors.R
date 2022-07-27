@@ -210,7 +210,7 @@ translateFactors <- function(
 
   # Recovering attributes for report ---------------------------------
   attributes(df) <- c(attributes(df), at)
-
+  rlang::inform("Remember to do makeFactors first")
   return(df)
 }
 
