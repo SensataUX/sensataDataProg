@@ -36,7 +36,7 @@
 #' bogData1 <- bogData1 %>% scrubData(removeDupes = F, ageVar = "EVCS2", ageVal = "Menos de 18 años", geoloc = T)
 #' @export
 
-# TODO: How to include another variable or vector of variables.
+# TODO: How to include vector of variables.
 # TODO: Geolocation fencing.
 
 
@@ -102,7 +102,7 @@ scrubRows <- function(df,
   if(!is.null(ageVar)){
     # ageVar <- sym(ageVar)
     # ageVal <- enquo(ageVal) {{ageVal}}
-    df <- subset(df,!(df[[ageVar]] %in% ageVal))
+    df <- df %>% subset(!(df[[ageVar]] %in% ageVal))
     numAfterAge <- nrow(df)
   } else {
     numAfterAge <- "NA"
@@ -135,7 +135,7 @@ scrubRows <- function(df,
   if(!is.null(particularVal)){
     var <- names(particularVal)
     val <- unname(particularVal)
-    df <- df %>% filter(var == val)
+    df <- df %>% subset(df[[var]] %in% val)
     numAfterPartVal <- nrow(df)
   } else {
     numAfterPartVal <- "NA"
@@ -154,6 +154,7 @@ scrubRows <- function(df,
   attr(df, "numAfterAge") <- numAfterAge
   attr(df, "numAfterCompleteVars") <- numAfterCompleteVars
   attr(df, "numAfterMissing") <- numAfterMissing
+  attr(df, "numAfterMissing") <- numAfterPartVal
   attr(df, "numFinal") <- numFinal
 
   # output ------------------------------------------------------------------
