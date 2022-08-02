@@ -13,7 +13,9 @@ scrubRows(
   ageVal = NULL,
   testParamName = NULL,
   completeVars = NULL,
-  maxSkippedQs = NULL
+  maxSkippedQs = NULL,
+  skipQuestionString = "S99",
+  particularVal = NULL
 )
 }
 \arguments{
@@ -34,6 +36,8 @@ scrubRows(
 \item{completeVars}{character vector of variables that have to be complete. It erases individuals that did not answer ALL of them.}
 
 \item{maxSkippedQs}{maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.}
+
+\item{skipQuestionString}{skip question string, by default S99}
 
 \item{particularVal}{named vector, where name is the variable to be used as filter and the value is the value to be kept}
 }

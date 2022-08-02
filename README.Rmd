@@ -68,6 +68,7 @@ intData <- intData %>% makeFactors(dictionary = Dict,
 
 ## TO-DO
 
+- unify scrubPeaks and scrubPeaksSource
 - Create weights
 - Create vignettes
 - Create tests

@@ -18,8 +18,16 @@
 #' - scrubPeaks: eliminar picos atípicos
 #' - translateFactors: traducir datos de un idioma a otro
 #' - extractMetaData: Extraer metadatos para archivo de seguimiento
+#' - conjoint2Tasks: Function to create conjoint data by rounds
+#' - delExtraCar: Function to eliminate extra characters for conjoint
+#' - dividehun_fun and dividethou_fun: helper functions to divide by a hundred and a thousand
+#' - from0to100: to rescale, usually likert, to a 0 to a 100 scale
+#' - not_all_na: Selecter for columns that are ALL NA
+#' - not_any_na: Selecter for columns that have ANY NA
+#' - scrubPeaks: Function to scrub atypical peaks to control manipulation attempts using medium param
+#' - scrubPeaksSource: Function to scrub atypical peaks to control manipulation attempts using source param
 #'
-#' @source \url{https://github.com/GaborioSensata/sensataDataProg}
+#' @source \url{https://github.com/SensataUx/sensataDataProg}
 #'
 #'
 #' @docType package

@@ -5,7 +5,7 @@
 \alias{sensataDataProg}
 \title{sensataDataProg: from Mongo to R}
 \source{
-\url{https://github.com/GaborioSensata/sensataDataProg}
+\url{https://github.com/SensataUx/sensataDataProg}
 }
 \description{
 This package has the functions needed to clean and manipulate data created with the Sensata platform.
@@ -31,6 +31,14 @@ Además incluye funciones para otros procesamientos de datos que solemos hacer:
 \item scrubPeaks: eliminar picos atípicos
 \item translateFactors: traducir datos de un idioma a otro
 \item extractMetaData: Extraer metadatos para archivo de seguimiento
+\item conjoint2Tasks: Function to create conjoint data by rounds
+\item delExtraCar: Function to eliminate extra characters for conjoint
+\item dividehun_fun and dividethou_fun: helper functions to divide by a hundred and a thousand
+\item from0to100: to rescale, usually likert, to a 0 to a 100 scale
+\item not_all_na: Selecter for columns that are ALL NA
+\item not_any_na: Selecter for columns that have ANY NA
+\item scrubPeaks: Function to scrub atypical peaks to control manipulation attempts using medium param
+\item scrubPeaksSource: Function to scrub atypical peaks to control manipulation attempts using source param
 }
 }
 

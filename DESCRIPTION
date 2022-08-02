@@ -1,7 +1,7 @@
 Package: sensataDataProg
 Type: Package
 Title: Cleaning Data from Sensata Platform
-Version: 1.1.2
+Version: 1.1.3
 Authors@R: 
     c(person(given = "Gabriel N.",
            family = "Camargo-Toledo",
@@ -28,7 +28,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Imports:
     labelled,
     splitstackshape,

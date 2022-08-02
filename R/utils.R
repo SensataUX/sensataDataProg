@@ -118,6 +118,8 @@ delExtraCar <- function(x) {
   o <- x %>%
     str_replace_all('","', "     ") %>%
     str_replace_all("[[:punct:]]", "") %>%
+    str_replace_all("brbrbrbr", ", ") %>%
+    str_replace_all("brbrbr", ", ") %>%
     str_replace_all("brbr", ", ") %>%
     str_replace_all("     ", " / ")
   o
