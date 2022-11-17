@@ -118,7 +118,8 @@ dictGenerator <- function(df,
 
   # fix bilderset
   output$options[output$type == "bilderset" & str_detect(output$options, "//")] <- output$options[output$type == "bilderset" & str_detect(output$options, "//")] %>% str_extract(".+?(?=//)")
-
+  # fix bilderset
+  output$options <- output$options %>% str_trim(side = "both")
   # Output ------------------------------------------------------------------
   return(output)
 

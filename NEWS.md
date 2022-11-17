@@ -1,5 +1,5 @@
-# sensataDataProg 1.1.2
-fix documentation, and fix bugs on delExtraCar
+# sensataDataProg 1.1.3
+fix documentation, and fix bugs on delExtraCar, add trim whitespace options dict generator
 
 # sensataDataProg 1.1.2
 Include missing questions feature to scrubRows
