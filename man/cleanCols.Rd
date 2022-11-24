@@ -8,8 +8,8 @@ cleanCols(
   df,
   dictionary,
   colsToKeep = c("id", "surveyName", "surveyId", "totalTimeMin",
-    "geolocation.coordinates", "lat", "long", "fingerprint", "browserReport.ip",
-    "sensataId", "createdAt"),
+    "geolocation.coordinates", "lat", "long", "geo.accuracy", "fingerprint",
+    "browserReport.ip", "sensataId", "createdAt"),
   removeParams = FALSE,
   removeScreens = TRUE,
   responseType = "newResponses"

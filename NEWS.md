@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.4
+add geo.accuracy to colsToKeep argument on cleanCols and kept it on selectCols if dropGeo = F
+
 # sensataDataProg 1.1.3
 fix documentation, and fix bugs on delExtraCar, add trim whitespace options dict generator
 

@@ -18,7 +18,7 @@ selectCols(
 \arguments{
 \item{df}{data downloaded from Mongo, cleaned with cleanData.R, scrubbed with scrubData.R and prepared with factorSensata.R.}
 
-\item{dropGeo}{if TRUE will drop coordinates (lat & long)}
+\item{dropGeo}{if TRUE will drop coordinates (lat & long) and geo.accuracy}
 
 \item{geoCoordinates}{if TRUE will drop geo.coordinates columns, instead of lat & long}
 

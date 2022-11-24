@@ -17,7 +17,7 @@
 #'
 #' This function eliminates most metadata from the dataset. This is basically a wrapper for tidyverse::select()
 #' @param df data downloaded from Mongo, cleaned with cleanData.R, scrubbed with scrubData.R and prepared with factorSensata.R.
-#' @param dropGeo if TRUE will drop coordinates (lat & long)
+#' @param dropGeo if TRUE will drop coordinates (lat & long) and geo.accuracy
 #' @param geoCoordinates if TRUE will drop geo.coordinates columns, instead of lat & long
 #' @param dropParams if TRUE will drop all columns that start with params
 #' @param dropUserData if TRUE will drop fingerprint and sensataId
@@ -50,10 +50,10 @@ selectCols <- function(df,
   }
   dropVec <- vector()
   if(dropGeo && geoCoordinates){
-    dropVec <- c("geolocation.coordinates")
+    dropVec <- c("geolocation.coordinates", "geo.accuracy")
   }
   if(dropGeo && !geoCoordinates){
-    dropVec <- c("lat", "long")
+    dropVec <- c("lat", "long", "geo.accuracy")
   }
   if(dropParams){
     df <- df %>% select(!(starts_with('params')))
