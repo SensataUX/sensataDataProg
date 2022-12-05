@@ -141,7 +141,7 @@ scrubRows <- function(df,
   if(!is.null(particularVal)){
     var <- names(particularVal)
     val <- unname(particularVal)
-    df <- df %>% subset(df[[var]] %in% val)
+    df <- df %>% subset(!(df[[var]] %in% val))
     numAfterPartVal <- nrow(df)
   } else {
     numAfterPartVal <- "NA"
@@ -151,7 +151,7 @@ scrubRows <- function(df,
   if(!is.null(particularVal2)){
     var <- names(particularVal2)
     val <- unname(particularVal2)
-    df <- df %>% subset(df[[var]] %in% val)
+    df <- df %>% subset(!(df[[var]] %in% val))
     numAfterPartVal2 <- nrow(df)
   } else {
     numAfterPartVal2 <- "NA"
@@ -161,7 +161,7 @@ scrubRows <- function(df,
   if(!is.null(particularVal3)){
     var <- names(particularVal3)
     val <- unname(particularVal3)
-    df <- df %>% subset(df[[var]] %in% val)
+    df <- df %>% subset(!(df[[var]] %in% val))
     numAfterPartVal3 <- nrow(df)
   } else {
     numAfterPartVal3 <- "NA"
