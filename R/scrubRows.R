@@ -179,6 +179,8 @@ scrubRows <- function(df,
   attr(df, "numAfterCompleteVars") <- numAfterCompleteVars
   attr(df, "numAfterMissing") <- numAfterMissing
   attr(df, "numAfterPartVal") <- numAfterPartVal
+  attr(df, "numAfterPartVal2") <- numAfterPartVal2
+  attr(df, "numAfterPartVal3") <- numAfterPartVal3
   attr(df, "numFinal") <- numFinal
 
   # output ------------------------------------------------------------------
