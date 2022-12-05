@@ -55,8 +55,8 @@ scrubRows <- function(df,
                       completeVars = NULL,
                       maxSkippedQs = NULL,
                       skipQuestionString = "S99",
-                      particularVal = NULL
-                      particularVal2 = NULL
+                      particularVal = NULL,
+                      particularVal2 = NULL,
                       particularVal3 = NULL){
 
 
