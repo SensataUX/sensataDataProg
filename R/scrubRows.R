@@ -27,6 +27,8 @@
 #' @param maxSkippedQs maximum number of missing questions accepted, if someone skips more than this number of questions, then they will be scrubbed.
 #' @param skipQuestionString skip question string, by default S99
 #' @param particularVal named vector, where name is the variable to be used as filter and the value is the value to be kept
+#' @param particularVal2 named vector, where name is the variable to be used as filter and the value is the value to be kept
+#' @param particularVal3 named vector, where name is the variable to be used as filter and the value is the value to be kept
 #'
 #' @author Gabriel N. Camargo-Toledo \email{gcamargo@@sensata.io}
 #' @return Dataframe with the cases scrubbed, and the attributes with the number of cases left after each step for the report: oriNum, removeDupesNum, ageNum, timeNum, geoNum, and finNum
@@ -53,7 +55,9 @@ scrubRows <- function(df,
                       completeVars = NULL,
                       maxSkippedQs = NULL,
                       skipQuestionString = "S99",
-                      particularVal = NULL){
+                      particularVal = NULL
+                      particularVal2 = NULL
+                      particularVal3 = NULL){
 
 
   # Erase test --------------------------------------------------------------
@@ -143,7 +147,25 @@ scrubRows <- function(df,
     numAfterPartVal <- "NA"
   }
 
+  # particularVal2 -----------------------------------------------------------
+  if(!is.null(particularVal2)){
+    var <- names(particularVal2)
+    val <- unname(particularVal2)
+    df <- df %>% subset(df[[var]] %in% val)
+    numAfterPartVal2 <- nrow(df)
+  } else {
+    numAfterPartVal2 <- "NA"
+  }
 
+  # particularVal3 -----------------------------------------------------------
+  if(!is.null(particularVal3)){
+    var <- names(particularVal3)
+    val <- unname(particularVal3)
+    df <- df %>% subset(df[[var]] %in% val)
+    numAfterPartVal3 <- nrow(df)
+  } else {
+    numAfterPartVal3 <- "NA"
+  }
   # Save final number of people -------------------------------------------
   numFinal <- nrow(df)
 

@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.5
+add particularVal2 and particularVal3 to scrubRows to scrub different particular values of a variable
+
 # sensataDataProg 1.1.4
 add geo.accuracy to colsToKeep argument on cleanCols and kept it on selectCols if dropGeo = F
 
