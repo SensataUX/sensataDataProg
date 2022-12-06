@@ -72,7 +72,7 @@ selectCols <- function(df,
     df <- df %>% select(!(ends_with("_time")))
   }
   if(!is_empty(dropVec)){
-    df <- df %>% select(-all_of(dropVec))
+    df <- df %>% select(-any_of(dropVec))
   }
 
 
