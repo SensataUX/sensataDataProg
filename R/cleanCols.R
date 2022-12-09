@@ -56,7 +56,7 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
 
   # Select columns --------------------------------
   df <- df %>%
-    select(all_of(colsToKeep),
+    select(any_of(colsToKeep),
            starts_with("params"),
            starts_with(responseType),
            ends_with(".timeToCompletion")) %>%
