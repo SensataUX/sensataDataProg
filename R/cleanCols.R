@@ -60,7 +60,7 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
            starts_with("params"),
            starts_with(responseType),
            ends_with(".timeToCompletion")) %>%
-    select(all_of(colsToKeep),
+    select(any_of(colsToKeep),
            starts_with("params"),
            contains("selected"),
            ends_with(".timeToCompletion")) %>%
@@ -102,7 +102,7 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
   # Remove screens ---------------------------------------------------
   if(removeScreens){
     screensVec <- dictionary[["identifier"]][dictionary[["type"]]=="screen"]
-    df <- df %>% select(-(all_of(screensVec)))
+    df <- df %>% select(-(any_of(screensVec)))
   }
 
   # output ------------------------------------------------------------------
