@@ -33,7 +33,7 @@ dictGenerator <- function(df,
                           expandOptions = TRUE,
                           questionPrefix = "",
                           forceOrdered = NULL,
-                          responseType = "newResponses"){
+                          responseType = "structuredResponses"){
 
   # warn about answer type if newResponses:
   if(responseType == "newResponses"){

@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.6
+change default to structuredResponses, since that is how the platform now works
+
 # sensataDataProg 1.1.5
 add particularVal2 and particularVal3 to scrubRows to scrub different particular values of a variable
 

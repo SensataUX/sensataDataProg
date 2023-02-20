@@ -47,7 +47,7 @@ cleanCols <- function(df, dictionary, colsToKeep = c("id",
                                                      "createdAt"),
                       removeParams = FALSE,
                       removeScreens = TRUE,
-                      responseType = "newResponses"){
+                      responseType = "structuredResponses"){
 
 
   # Rename _id
