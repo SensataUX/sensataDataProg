@@ -29,7 +29,7 @@
 # TODO: Fix dictGenerator example
 
 dictGenerator <- function(df,
-                          cols = c('qid', 'identifier', 'question', 'type', 'options', 'numberOfOptions', 'isOrdered', 'isSorting', 'maxResponses', 'altOption'),
+                          cols = c('qid', 'identifier', 'question', 'type', 'options', 'numberOfOptions', 'isOrdered', 'isSorting', 'maxResponses', 'altOption','isRandomGroupChild'),
                           expandOptions = TRUE,
                           questionPrefix = "",
                           forceOrdered = NULL,
