@@ -29,7 +29,8 @@
 # TODO: Fix dictGenerator example
 
 dictGenerator <- function(df,
-                          cols = c('qid', 'identifier', 'question', 'type', 'options', 'numberOfOptions', 'isOrdered', 'isSorting', 'maxResponses', 'altOption','isRandomGroupChild'),
+                          cols = c(#'qid',
+                                   'identifier', 'question', 'type', 'options', 'numberOfOptions', 'isOrdered', 'isSorting', 'maxResponses', 'altOption','isRandomGroupChild'),
                           expandOptions = TRUE,
                           questionPrefix = "",
                           forceOrdered = NULL,
@@ -114,7 +115,7 @@ dictGenerator <- function(df,
 
   #output <- output %>% rename("order" = "qid")
   output$id <- output$id %>% str_replace(".", "")
-  output <- output %>% filter(!is.na(order))
+  # output <- output %>% filter(!is.na(order))
 
   # fix bilderset
   output$options[output$type == "bilderset" & str_detect(output$options, "//")] <- output$options[output$type == "bilderset" & str_detect(output$options, "//")] %>% str_extract(".+?(?=//)")
