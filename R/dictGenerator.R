@@ -112,7 +112,7 @@ dictGenerator <- function(df,
   # remove tabulation in options
   output$options <- output$options %>% str_remove("\\\\u0009")
 
-  output <- output %>% rename("order" = "qid")
+  #output <- output %>% rename("order" = "qid")
   output$id <- output$id %>% str_replace(".", "")
   output <- output %>% filter(!is.na(order))
 
