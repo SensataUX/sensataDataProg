@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.7
+fix bug for makeFactors for specialSkipValue that was not working
+
 # sensataDataProg 1.1.6
 change default to structuredResponses, since that is how the platform now works
 

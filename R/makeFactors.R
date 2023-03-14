@@ -39,7 +39,6 @@ makeFactors <- function(
   dictionary,
   questionPrefix = "q_",
   skipQuestionString = "Saltar pregunta",
-  addSpecialSkipValue = F,
   specialSkipValue = NULL,
   multChoiceText = c(1,0),
   dummyMultiChoice = T
@@ -182,7 +181,7 @@ makeFactors <- function(
    # If special value provided -----
     if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
       lev <- lev[-length(lev)]
-      lev <- c(lev, specialSkipValue)
+      lev <- c(1:length(lev), specialSkipValue)
       names(lev) <- lab
       df[[v]] <- df[[v]] %>%
         labelled_spss(labels = lev)
