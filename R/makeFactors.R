@@ -151,6 +151,13 @@ makeFactors <- function(
             str_replace_all("[^a-zA-Z0-9_]", "") %>%
             str_trunc(30, ellipsis = "")
           df[[colName]] <- if_else(str_detect(df[[v]], o), multChoiceText[1], multChoiceText[2])
+          df[[colName]] <- df[[colName]] %>% factor()
+          if(is.numeric(specialSkipValue)){
+            levs <- c(1,2)
+            names(levs) <- multChoiceText
+            df[[colName]] <- df[[colName]] %>%
+              labelled_spss(labels = levs)
+          }
           df <- df %>% relocate(all_of(colName), .after = all_of(v))
         }
         df <- df %>% select(!starts_with("MUL"))
