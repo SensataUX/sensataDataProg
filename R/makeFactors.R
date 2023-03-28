@@ -105,8 +105,7 @@ makeFactors <- function(
       }
 
       if(is.numeric(specialSkipValue)){
-        df <- df %>%
-          mutate(.cols = all_of(v), ~ifelse(.x == skipQuestionString, specialSkipValue, .x))
+        df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
         lab <- c(dict[["options"]], skipQuestionString)
         lev <- c(dict[["options"]], specialSkipValue)
       }
