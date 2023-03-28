@@ -97,10 +97,17 @@ makeFactors <- function(
 
     # Creating levels and labels of factors and columns for multiple choice -------------
     # Single choice questions ------
-    if(!(isMultiple) && isClose){
+    # If special value provided -----
+    if(!(isMultiple) && isClose && is.null(specialSkipValue)){
 
       lab <- c(dict[["options"]], skipQuestionString)
       lev <- c(dict[["options"]], skipQuestionString)
+      if(is.numeric(specialSkipValue)){
+        df <- df %>%
+          mutate(.cols = all_of(v), ~ifelse(.x == skipQuestionString, specialSkipValue, .x))
+        lab <- c(dict[["options"]], skipQuestionString)
+        lev <- c(dict[["options"]], specialSkipValue)
+      }
 
       # Modifying labels and levels for ordered, NPS and slider
       if(dict[["isOrdered"]][1]){
@@ -185,8 +192,8 @@ makeFactors <- function(
                         labels = lab,
                         ordered = as.logical(dict[["isOrdered"]][1]))
     }
+
    # If special value provided -----
-    if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
       lev <- lev[-length(lev)]
       lev <- c(1:length(lev), specialSkipValue)
       names(lev) <- lab
