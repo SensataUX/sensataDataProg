@@ -180,7 +180,8 @@ makeFactors <- function(
     if(is.numeric(specialSkipValue)){
       df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
       # lev <- c(dict[["options"]], specialSkipValue)
-      lev <- lev[-length(lev)]
+      # lev <- lev[-length(lev)]
+      lev <- lev[!x %in% skipQuestionString]
       lev <- c(lev, specialSkipValue)
     }
 
