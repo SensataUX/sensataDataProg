@@ -194,6 +194,8 @@ makeFactors <- function(
                         labels = lab,
                         ordered = as.logical(dict[["isOrdered"]][1]))
     }
+    rlang::inform(paste0("levels : ", lev))
+    rlang::inform(paste0("labels : ", lev))
 
    # If special value provided -----
     if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
@@ -226,7 +228,6 @@ makeFactors <- function(
   attributes(df) <- c(attributes(df), at)
 
   return(df)
-  print(lev)
-  print(lab)
+
 }
 
