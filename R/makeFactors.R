@@ -103,13 +103,6 @@ makeFactors <- function(
         lab <- c(dict[["options"]], skipQuestionString)
         lev <- c(dict[["options"]], skipQuestionString)
       }
-
-      if(is.numeric(specialSkipValue)){
-        df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
-        lab <- c(dict[["options"]], skipQuestionString)
-        lev <- c(dict[["options"]], specialSkipValue)
-      }
-
       # Modifying labels and levels for ordered, NPS and slider
       if(dict[["isOrdered"]][1]){
         lev <- c(1:(dict[["numberOfOptions"]][1]), skipQuestionString)
@@ -186,13 +179,20 @@ makeFactors <- function(
       lab <- levels(df[[v]])
       dict[["isOrdered"]] <- T
     }
+    if(is.numeric(specialSkipValue)){
+      df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
+      # lev <- c(dict[["options"]], specialSkipValue)
+      lev <- lev[-length(lev)]
+      lev <- c(lev, specialSkipValue)
+    }
+
     # Factor -------
-    if(!(isMultiple) && isClose #&& is.null(specialSkipValue)
+    if(!(isMultiple) && isClose && is.null(specialSkipValue)
        ){
-      # df[[v]] <- factor(df[[v]],
-      #                   levels = lev,
-      #                   labels = lab,
-      #                   ordered = as.logical(dict[["isOrdered"]][1]))
+      df[[v]] <- factor(df[[v]],
+                        levels = lev,
+                        labels = lab,
+                        ordered = as.logical(dict[["isOrdered"]][1]))
     }
 
 
