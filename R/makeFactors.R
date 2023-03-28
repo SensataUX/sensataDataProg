@@ -226,5 +226,7 @@ makeFactors <- function(
   attributes(df) <- c(attributes(df), at)
 
   return(df)
+  print(lev)
+  print(lab)
 }
 
