@@ -187,7 +187,8 @@ makeFactors <- function(
       dict[["isOrdered"]] <- T
     }
     # Factor -------
-    if(!(isMultiple) && isClose && is.null(specialSkipValue)){
+    if(!(isMultiple) && isClose #&& is.null(specialSkipValue)
+       ){
       df[[v]] <- factor(df[[v]],
                         levels = lev,
                         labels = lab,
