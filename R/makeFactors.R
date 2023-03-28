@@ -198,6 +198,8 @@ makeFactors <- function(
     if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
       # lev <- lev[-length(lev)]
       # lev <- c(1:length(lev), specialSkipValue)
+      lab <- lab[-length(lab)]
+      lab <- c(lab, specialSkipValue)
       names(lev) <- lab
       df[[v]] <- df[[v]] %>%
         labelled_spss(labels = lev)
