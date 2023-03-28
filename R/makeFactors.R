@@ -1,3 +1,4 @@
+
 # makeFactors.R V1
 # Description: This function eliminates the unnecesary metadata columns and renames the columns from mongo to the identifier, according to the dictionary.
 # Created by: Gabriel N. Camargo-Toledo
@@ -35,13 +36,13 @@
 #' @export
 
 makeFactors <- function(
-  df,
-  dictionary,
-  questionPrefix = "q_",
-  skipQuestionString = "Saltar pregunta",
-  specialSkipValue = NULL,
-  multChoiceText = c(1,0),
-  dummyMultiChoice = T
+    df,
+    dictionary,
+    questionPrefix = "q_",
+    skipQuestionString = "Saltar pregunta",
+    specialSkipValue = NULL,
+    multChoiceText = c(1,0),
+    dummyMultiChoice = T
 ) {
 
 
@@ -97,10 +98,11 @@ makeFactors <- function(
 
     # Creating levels and labels of factors and columns for multiple choice -------------
     # Single choice questions ------
-    # If special value provided -----
     if(!(isMultiple) && isClose){
+
       lab <- c(dict[["options"]], skipQuestionString)
       lev <- c(dict[["options"]], skipQuestionString)
+
       # Modifying labels and levels for ordered, NPS and slider
       if(dict[["isOrdered"]][1]){
         lev <- c(1:(dict[["numberOfOptions"]][1]), skipQuestionString)
@@ -173,18 +175,10 @@ makeFactors <- function(
       }
     }
     if(dict[["isForceOrdered"]][1] && !is.na(dict[["isForceOrdered"]][1])){
-      lev <- levels(df[[v]])
-      lab <- levels(df[[v]])
+      # lev <- levels(df[[v]])
+      # lab <- levels(df[[v]])
       dict[["isOrdered"]] <- T
     }
-    if(is.numeric(specialSkipValue)){
-      df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
-      # lev <- c(dict[["options"]], specialSkipValue)
-      # lev <- lev[-length(lev)]
-      lev <- lev[!lev %in% skipQuestionString]
-      lev <- c(lev, specialSkipValue)
-    }
-
     # Factor -------
     if(!(isMultiple) && isClose){
       df[[v]] <- factor(df[[v]],
@@ -192,17 +186,13 @@ makeFactors <- function(
                         labels = lab,
                         ordered = as.logical(dict[["isOrdered"]][1]))
     }
-
-
-   # If special value provided -----
+    # If special value provided -----
     if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
-      # lev <- lev[-length(lev)]
-      # lev <- c(1:length(lev), specialSkipValue)
-      # lab <- lab[-length(lab)]
-      # lab <- c(lab, specialSkipValue)
-      # names(lev) <- lab
-      # df[[v]] <- df[[v]] %>%
-      #   labelled_spss(labels = lev)
+      lev <- lev[-length(lev)]
+      lev <- c(1:length(lev), specialSkipValue)
+      names(lev) <- lab
+      df[[v]] <- df[[v]] %>%
+        labelled_spss(labels = lev)
     }
   }
   # Label vars --------------------------------------------------------------
@@ -225,6 +215,4 @@ makeFactors <- function(
   attributes(df) <- c(attributes(df), at)
 
   return(df)
-
 }
-
