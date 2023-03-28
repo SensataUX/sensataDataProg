@@ -185,8 +185,7 @@ makeFactors <- function(
     }
 
     # Factor -------
-    if(!(isMultiple) && isClose && is.null(specialSkipValue)
-       ){
+    if(!(isMultiple) && isClose){
       df[[v]] <- factor(df[[v]],
                         levels = lev,
                         labels = lab,
