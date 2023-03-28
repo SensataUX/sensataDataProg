@@ -182,8 +182,8 @@ makeFactors <- function(
       }
     }
     if(dict[["isForceOrdered"]][1] && !is.na(dict[["isForceOrdered"]][1])){
-      # lev <- levels(df[[v]])
-      # lab <- levels(df[[v]])
+      lev <- levels(df[[v]])
+      lab <- levels(df[[v]])
       dict[["isOrdered"]] <- T
     }
     # Factor -------
@@ -196,11 +196,11 @@ makeFactors <- function(
 
    # If special value provided -----
     if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
-      # lev <- lev[-length(lev)]
-      # lev <- c(1:length(lev), specialSkipValue)
-      # names(lev) <- lab
-      # df[[v]] <- df[[v]] %>%
-      #   labelled_spss(labels = lev)
+      lev <- lev[-length(lev)]
+      lev <- c(1:length(lev), specialSkipValue)
+      names(lev) <- lab
+      df[[v]] <- df[[v]] %>%
+        labelled_spss(labels = lev)
     }
   }
   # Label vars --------------------------------------------------------------
