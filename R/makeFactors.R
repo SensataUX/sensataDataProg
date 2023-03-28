@@ -199,8 +199,8 @@ makeFactors <- function(
       lev <- lev[-length(lev)]
       lev <- c(1:length(lev), specialSkipValue)
       names(lev) <- lab
-      df[[v]] <- df[[v]] %>%
-        labelled_spss(labels = lev)
+      # df[[v]] <- df[[v]] %>%
+      #   labelled_spss(labels = lev)
     }
   }
   # Label vars --------------------------------------------------------------
