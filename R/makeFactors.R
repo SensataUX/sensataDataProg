@@ -110,9 +110,6 @@ makeFactors <- function(
         lev <- c(dict[["options"]], specialSkipValue)
       }
 
-      rlang::inform(paste0("levels : ", lev))
-      rlang::inform(paste0("labels : ", lab))
-
       # Modifying labels and levels for ordered, NPS and slider
       if(dict[["isOrdered"]][1]){
         lev <- c(1:(dict[["numberOfOptions"]][1]), skipQuestionString)
@@ -192,10 +189,10 @@ makeFactors <- function(
     # Factor -------
     if(!(isMultiple) && isClose #&& is.null(specialSkipValue)
        ){
-      df[[v]] <- factor(df[[v]],
-                        levels = lev,
-                        labels = lab,
-                        ordered = as.logical(dict[["isOrdered"]][1]))
+      # df[[v]] <- factor(df[[v]],
+      #                   levels = lev,
+      #                   labels = lab,
+      #                   ordered = as.logical(dict[["isOrdered"]][1]))
     }
 
 
