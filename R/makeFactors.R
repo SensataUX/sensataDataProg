@@ -106,7 +106,7 @@ makeFactors <- function(
 
       if(is.numeric(specialSkipValue)){
         df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
-        lab <- c(dict[["options"]], specialSkipValue)
+        lab <- c(dict[["options"]], skipQuestionString)
         lev <- c(dict[["options"]], specialSkipValue)
       }
 
@@ -187,7 +187,7 @@ makeFactors <- function(
       dict[["isOrdered"]] <- T
     }
     # Factor -------
-    if(!(isMultiple) && isClose){
+    if(!(isMultiple) && isClose && is.null(specialSkipValue)){
       df[[v]] <- factor(df[[v]],
                         levels = lev,
                         labels = lab,
