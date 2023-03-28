@@ -181,7 +181,7 @@ makeFactors <- function(
       df[[v]][df[[v]] == skipQuestionString] <- specialSkipValue
       # lev <- c(dict[["options"]], specialSkipValue)
       # lev <- lev[-length(lev)]
-      lev <- lev[!x %in% skipQuestionString]
+      lev <- lev[!lev %in% skipQuestionString]
       lev <- c(lev, specialSkipValue)
     }
 
