@@ -99,10 +99,8 @@ makeFactors <- function(
     # Single choice questions ------
     # If special value provided -----
     if(!(isMultiple) && isClose){
-      if(is.null(specialSkipValue)){
-        lab <- c(dict[["options"]], skipQuestionString)
-        lev <- c(dict[["options"]], skipQuestionString)
-      }
+      lab <- c(dict[["options"]], skipQuestionString)
+      lev <- c(dict[["options"]], skipQuestionString)
       # Modifying labels and levels for ordered, NPS and slider
       if(dict[["isOrdered"]][1]){
         lev <- c(1:(dict[["numberOfOptions"]][1]), skipQuestionString)
