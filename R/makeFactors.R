@@ -140,6 +140,9 @@ makeFactors <- function(
         lev <- c(dict[["options"]], dict[["altOption"]][1], skipQuestionString)
       }
     }
+    print(paste0("Labels are:", lab))
+    print(paste0("Levels are:", lev))
+
 
     # Multiple choice questions ------
     if(dummyMultiChoice){
