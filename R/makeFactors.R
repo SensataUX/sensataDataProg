@@ -142,7 +142,7 @@ makeFactors <- function(
     }
     # print(paste0("Labels are:", lab))
     # print(paste0("Levels are:", lev))
-    print(table(df[[v]]))
+    # print(table(df[[v]]))
 
     # Multiple choice questions ------
     if(dummyMultiChoice){
@@ -197,9 +197,10 @@ makeFactors <- function(
     }
     # If special value provided -----
     if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
-      lev <- lev[-length(lev)]
-      lev <- c(1:length(lev), as.numeric(specialSkipValue))
+      # lev <- lev[-length(lev)]
+      # lev <- c(1:length(lev), as.numeric(specialSkipValue))
       names(lev) <- lab
+      print(lev)
       df[[v]] <- df[[v]] %>%
         labelled_spss(labels = lev)
     }
