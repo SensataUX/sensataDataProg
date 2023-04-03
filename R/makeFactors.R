@@ -68,9 +68,11 @@ makeFactors <- function(
   df[df == "false"] <- "0"
   df[df == "NS-NR"] <- skipQuestionString
   df[df == "S99"] <- skipQuestionString
+
   # Change is skipSpecialValue
   if(!is.null(specialSkipValue)){
     df[df == skipQuestionString] <- specialSkipValue
+    skipQuestionString <- specialSkipValue
   }
   df["createdAt"] <- createdAt
 
