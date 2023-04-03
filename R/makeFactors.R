@@ -50,8 +50,8 @@ makeFactors <- function(
   rlang::inform("This function assumes that skipped questions are coded as S99 in mongo, if not you need to change the function.")
 
   # Error if special value is not numeric
-  if (!is.numeric(specialSkipValue) && !is.null(specialSkipValue)) {
-    rlang::abort("specialSkipValue is not a number, makeFactors will not work")
+  if (!is.numeric(as.numeric(specialSkipValue)) && !is.null(specialSkipValue)) {
+    rlang::abort("specialSkipValue is not a number coerced as a character, makeFactors will not work")
   }
 
   # Saving data attributes of sample size (number of rows) for report ----------
@@ -193,7 +193,7 @@ makeFactors <- function(
     # If special value provided -----
     if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
       lev <- lev[-length(lev)]
-      lev <- c(1:length(lev), specialSkipValue)
+      lev <- c(1:length(lev), as.numeric(specialSkipValue))
       names(lev) <- lab
       df[[v]] <- df[[v]] %>%
         labelled_spss(labels = lev)
