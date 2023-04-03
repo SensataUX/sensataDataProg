@@ -204,7 +204,7 @@ makeFactors <- function(
   #     df[[v]] <- df[[v]] %>%
   #       labelled_spss(labels = lev)
   #   }
-  # }
+  }
   # Label vars --------------------------------------------------------------
   labList <- dictionary %>%
     filter(type!="screen") %>%
