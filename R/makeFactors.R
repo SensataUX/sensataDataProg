@@ -68,6 +68,10 @@ makeFactors <- function(
   df[df == "false"] <- "0"
   df[df == "NS-NR"] <- skipQuestionString
   df[df == "S99"] <- skipQuestionString
+  # Change is skipSpecialValue
+  if(!is.null(specialSkipValue)){
+    df[df == skipQuestionString] <- specialSkipValue
+  }
   df["createdAt"] <- createdAt
 
   # Vector of only questions ------------------------------------------------
@@ -153,7 +157,7 @@ makeFactors <- function(
             str_trunc(30, ellipsis = "")
           df[[colName]] <- if_else(str_detect(df[[v]], o), multChoiceText[1], multChoiceText[2])
           df[[colName]] <- df[[colName]] %>% factor()
-          if(is.numeric(specialSkipValue)){
+          if(!is.null(specialSkipValue)){
             levs <- c(1,2)
             names(levs) <- multChoiceText
             df[[colName]] <- df[[colName]] %>%
@@ -187,7 +191,7 @@ makeFactors <- function(
                         ordered = as.logical(dict[["isOrdered"]][1]))
     }
     # If special value provided -----
-    if(!(isMultiple) && isClose && is.numeric(specialSkipValue)){
+    if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
       lev <- lev[-length(lev)]
       lev <- c(1:length(lev), specialSkipValue)
       names(lev) <- lab

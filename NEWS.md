@@ -1,3 +1,6 @@
+# sensataDataProg 1.1.8
+specialSkipValue should now turn the underlying data to that value and work with SPSS, Stata, RDS and CSV files
+
 # sensataDataProg 1.1.7
 fix bug for makeFactors for specialSkipValue that was not working, and create labelled spss for multiple choice
 
