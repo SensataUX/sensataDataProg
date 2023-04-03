@@ -197,8 +197,8 @@ makeFactors <- function(
     }
     # If special value provided -----
     if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
-      # lev <- lev[-length(lev)]
-      # lev <- c(1:length(lev), as.numeric(specialSkipValue))
+      lev <- lev[-length(lev)]
+      lev <- c(1:length(lev), as.numeric(specialSkipValue))
       names(lev) <- lab
       print(lev)
       df[[v]] <- df[[v]] %>%
