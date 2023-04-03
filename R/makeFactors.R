@@ -142,7 +142,7 @@ makeFactors <- function(
     }
     # print(paste0("Labels are:", lab))
     # print(paste0("Levels are:", lev))
-    table(df[[v]])
+    print(table(df[[v]]))
 
     # Multiple choice questions ------
     if(dummyMultiChoice){
