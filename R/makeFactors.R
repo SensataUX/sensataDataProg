@@ -194,7 +194,7 @@ makeFactors <- function(
       dict[["isOrdered"]] <- T
     }
     # Factor -------
-    if(!(isMultiple) && isClose && is.null(specialSkipValue)){
+    if(!(isMultiple) && isClose){
       df[[v]] <- factor(df[[v]],
                         levels = lev,
                         labels = lab,
@@ -202,12 +202,14 @@ makeFactors <- function(
     }
     # If special value provided -----
   if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
-      lev <- lev[-length(lev)]
-      lev <- c(1:length(lev), as.numeric(specialSkipValue))
-      names(lev) <- lab
-      print(lev)
-      df[[v]] <- df[[v]] %>%
-        labelled_spss(labels = lev)
+    df <- df %>%
+      mutate(any_of(v), ~ifelse(.x == max(.x), 99, .x))
+    lev <- lev[-length(lev)]
+    lev <- c(1:length(lev), as.numeric(specialSkipValue))
+    names(lev) <- lab
+    print(lev)
+    df[[v]] <- df[[v]] %>%
+      labelled_spss(labels = lev)
   }
   }
   # Label vars --------------------------------------------------------------
