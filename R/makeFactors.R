@@ -72,6 +72,7 @@ makeFactors <- function(
   # Change is skipSpecialValue
   if(!is.null(specialSkipValue)){
     df[df == skipQuestionString] <- specialSkipValue
+    skipQuestionString2 <- skipQuestionString
     skipQuestionString <- specialSkipValue
   }
   df["createdAt"] <- createdAt
@@ -138,6 +139,10 @@ makeFactors <- function(
       if("altOption" %in% names(dict) && !is.na(dict[["altOption"]][1]) && !(dict[["isOrdered"]][1])){
         lab <- c(dict[["options"]], dict[["altOption"]][1], skipQuestionString)
         lev <- c(dict[["options"]], dict[["altOption"]][1], skipQuestionString)
+      }
+      if(!is.null(specialSkipValue)){
+        lab <- lab[-length(lab)]
+        lab <- c(lab, skipQuestionString2)
       }
     }
     # print(paste0("Labels are:", lab))
