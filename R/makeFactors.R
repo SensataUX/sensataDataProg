@@ -201,14 +201,14 @@ makeFactors <- function(
                         ordered = as.logical(dict[["isOrdered"]][1]))
     }
     # If special value provided -----
-    # if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
-  #     lev <- lev[-length(lev)]
-  #     lev <- c(1:length(lev), as.numeric(specialSkipValue))
-    #   names(lev) <- lab
-    #   print(lev)
-    #   df[[v]] <- df[[v]] %>%
-    #     labelled_spss(labels = lev)
-    # }
+  if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
+      lev <- lev[-length(lev)]
+      lev <- c(1:length(lev), as.numeric(specialSkipValue))
+      names(lev) <- lab
+      print(lev)
+      df[[v]] <- df[[v]] %>%
+        labelled_spss(labels = lev)
+  }
   }
   # Label vars --------------------------------------------------------------
   labList <- dictionary %>%
