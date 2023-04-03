@@ -202,7 +202,9 @@ makeFactors <- function(
     }
     # If special value provided -----
   if(!(isMultiple) && isClose && !is.null(specialSkipValue)){
+    levels(df[[v]]) <- c(levels(df[[v]]), specialSkipValue)
     df[[v]][df[[v]] == last(lev)] <- specialSkipValue
+    df[[v]] <- droplevels(df[[v]])
     lev <- lev[-length(lev)]
     lev <- c(1:length(lev), as.numeric(specialSkipValue))
     names(lev) <- lab
