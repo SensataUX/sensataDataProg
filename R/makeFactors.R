@@ -78,7 +78,7 @@ makeFactors <- function(
   df["createdAt"] <- createdAt
 
   # Vector of only questions ------------------------------------------------
-  questionsVec <- df %>% select(contains(questionPrefix), -ends_with("time")) %>% names()
+  questionsVec <- df %>% select(all_of(dictionary$identifier)) %>% names()
 
   # Loop over questions -----------------------------------------------------
   for(v in questionsVec){
@@ -208,7 +208,7 @@ makeFactors <- function(
     lev <- lev[-length(lev)]
     lev <- c(1:length(lev), as.numeric(specialSkipValue))
     names(lev) <- lab
-    print(lev)
+    # print(lev)
     df[[v]] <- df[[v]] %>%
       labelled_spss(labels = lev)
   }
